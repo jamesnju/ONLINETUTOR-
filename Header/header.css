@@ -1,0 +1,40 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: 0;
+}
+.container{
+    width: 20%;
+    height: 100vh;
+    background-color: gray;
+
+}
+.container>ul{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+
+}
+.container >li{
+    color: aliceblue;
+    background-color: #fff;
+
+}
+.container a{
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 20px;
+    padding: 2px;
+    margin: 3px;
+}
+/* Adjustments to make sidebar appear on the left side */
+.offcanvas {
+    left: 0;
+    transform: translateX(-100%);
+}
+
+.offcanvas.show {
+    transform: translateX(0);
+}
