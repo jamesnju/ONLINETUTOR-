@@ -3,6 +3,21 @@
     session_start();
 
 ?>
+<?php
+
+$select_query="select * from `registration`";
+$result=mysqli_query($con,$select_query);
+while($row_fetch=mysqli_fetch_assoc($result)){
+  
+$tutor_fname	=$_SESSION['tutor_fname'];
+$tutor_lname	=$row_fetch['tutor_lname'];
+$tutor_email	=$row_fetch['tutor_email'];
+$tutor_pic=$row_fetch['tutor_pic'];
+}
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,13 +86,22 @@
 </nav>
 <div class="container-fluid">
     <div class="profile">
-        <h3>profile</h3>
+        <fieldset>
+          <div class="image">
+            <?php echo  "<img src='./Auth/profileimg/$tutor_pic'> " ?>
+          </div>
+          <div class="details">
+            <h2><?php  echo  $tutor_fname;  ?></h2>
+            <h2><?php  echo  $tutor_lname;  ?></h2>
+            <h2><?php  echo  $tutor_email;  ?></h2>
+          </div>
+          <a href="editaccount.php">EditAccount</a>
+        </fieldset>
     </div>
+   
 </div>
-
-
-
 <script src="./main.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
+

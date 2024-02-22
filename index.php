@@ -3,6 +3,39 @@
     session_start();
 
 ?>
+<?php
+   $query = "SELECT COUNT(*) AS total_inquries FROM inguiry_list"; // Change 'users' to your actual table name
+   $result = mysqli_query($con, $query);
+
+   if (!$result) {
+       // Handle query error
+       die("Query failed: " . mysqli_error($con));
+   }
+   // Step 3: Fetch the result and display it on the dashboard
+   $row = mysqli_fetch_assoc($result);
+   $totalinquires = $row['total_inquries'];
+   // Display the total number of users on the dashboard
+   echo $totalinquires;
+?>
+<?php
+   $query = "SELECT COUNT(*) AS total_courses FROM course_list"; // Change 'users' to your actual table name
+   $result = mysqli_query($con, $query);
+
+   if (!$result) {
+       // Handle query error
+       die("Query failed: " . mysqli_error($con));
+   }
+   // Step 3: Fetch the result and display it on the dashboard
+   $row = mysqli_fetch_assoc($result);
+   $totalcourses = $row['total_courses'];
+   // Display the total number of users on the dashboard
+   echo  $totalcourses;
+?>
+
+
+
+    
+
 
 
 <!DOCTYPE html>
@@ -74,18 +107,24 @@
 <div class="container-fluid home">
   <div class="main">
     <div class="dashboard">
-      <p><a href="viewqueries.php">Viewquery</a></p>
+      <p>Active Courses</p>
+      <h1>1</h1>
     </div>
     <div class="dashboard">
-      <p><a href="addcourses.php">AddCourse</a></p>
+      <p>Inactive courses</p>
+      <h1>0</h1>
     </div>
     <div class="dashboard">
-      <p><a href="">ViewUser</a></p>
+      <p>Inquries</p>
+      <h1><?php echo $totalinquires; ?></h1>
     </div>
     <div class="dashboard">
-      <p><a href="courses.php">ViewCourse</a></p>
+      <p>Total Courses</p>
+      <h1><?php echo  $totalcourses;?></h1>
     </div>
-    
+  </div>
+  <div class="img">
+
   </div>
    
 </div>

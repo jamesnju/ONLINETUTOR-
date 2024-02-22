@@ -18,23 +18,35 @@ box-sizing: border-box;
     width: 100%;
     margin: auto;
     flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: 8px;
+    justify-content: space-between;
+    gap: 2px;
     background-color: gainsboro;
 }
 .dashboard{
     display: flex;
     padding-top: 13px;
+    flex-direction: column;
+    text-align: center;
     justify-content: center;
     margin-top: 20px;
     background-color: brown;
-    height: 4rem;
-    width: 10rem;
+    height: 14rem;
+    color: white;
+    width: 20rem;
     border-radius: 15px;
 }
-.dashboard p >a{
+.dashboard p {
     text-decoration: none;
     color: whitesmoke;
     font-size: 18px;
     font-weight: 500;
+}
+.img{
+    margin-top: -15rem;
+    display: flex;
+    height: 50vh;
+    width: 100%;
+    background-image: url('./image/dash2.avif');
+    background-size: cover; /* Adjusts the background image to cover the entire container */
+    background-position: center;
 }
