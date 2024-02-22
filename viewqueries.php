@@ -18,91 +18,36 @@
 
 </head>
 <body>
-<nav class="navbar navbar-dark bg-dark fixed-top ">
+<nav class="navbar navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand d-md-none d-sm-none" href="#">
-    <?php 
-        //displays username if logged in
-        if(!isset($_SESSION['tutor_fname'])){
-          echo '<li class="nav-item text-light">
-          <a class="nav-link text-light" href="#"><i class="fa-solid fa-user"></i>Welcome Guest</a>
-        </li>';
-        }else{
-          echo '<li class="nav-item">
-          <a class="nav-link text-light" href="#"><i class="fa-solid fa-user"></i>Welcome '.$_SESSION['tutor_fname'].'</a>
-        </li>';
-        }
-      ?>
-       <?php 
-          if(!isset($_SESSION['tutor_fname'])){
-            echo '<li class="nav-item">
-            <a class="nav-link text-light" href="login.php">Login</a>
-          </li>';
-          }else{
-            echo '<li class="nav-item">
-            <a class="nav-link text-light" href="logout.php">Logout</a>
-          </li>';
-          }
-        ?>
-        <!-- <li class="nav-item">
-          <a class="nav-link text-light active" aria-current="page" href="index.php">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-light" href="./Auth/login.php">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-light" href="./Auth/login.php">About Us</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link text-light" href="./Auth/login.php">Service</a>
-        </li>  -->
-    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+    <!-- Move Welcome section to the right -->
+    <div class="d-flex flex-row-reverse">
+      <?php if(!isset($_SESSION['tutor_fname'])) : ?>
+        <a class="nav-link text-light me-3" href="/Auth/login.php"><i class="fa-solid fa-user"></i>Welcome Guest</a>
+        <a class="nav-link text-light me-3" href="./Auth/login.php">Login</a>
+      <?php else : ?>
+        <a class="nav-link text-light me-3" href="profile.php"><i class="fa-solid fa-user"></i>Welcome <?php echo $_SESSION['tutor_fname']; ?></a>
+        <a class="nav-link text-light me-3" href="logout.php">Logout</a>
+      <?php endif; ?>
+    </div>
+    <!-- Sidebar on the left -->
+    <div class="offcanvas offcanvas-start bg-dark " tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dark offcanvas</h5>
+        <h5 class="offcanvas-title  text-light" id="offcanvasDarkNavbarLabel">OnlineTutors</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
      
       <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-          
-          
-          <li><a class="nav-link" href="index.php"><i class="fa-solid fa-gauge"></i>Dashboard</a></li>
-            <li><a class="nav-link" href="courses.php?courses"><i class="fa-solid fa-graduation-cap"></i>Courses</a></li>
-            <li><a class="nav-link" href="inquiry.php?inquiry"><i class="fa-solid fa-question"></i>Inquries</a></li>
-            <li><a class="nav-link" href="profile.php?profile"><i class="fa-solid fa-user"></i>Profile</a></li>
-            <!-- <li><a class="nav-link" href="./Auth/registration.php?register"><i class="fa-solid fa-user"></i>
-              
-            register
-          </a></li> -->
-          <?php 
-        //displays username if logged in
-        if(!isset($_SESSION['tutor_fname'])){
-          echo '<li class="nav-item">
-          <a class="nav-link" href="#"><i class="fa-solid fa-user"></i>Welcome Guest</a>
-        </li>';
-        }else{
-          echo '<li class="nav-item">
-          <a class="nav-link" href="#"><i class="fa-solid fa-user"></i>Welcome '.$_SESSION['tutor_fname'].'</a>
-        </li>';
-        }
-      ?>
-        <?php 
-          if(!isset($_SESSION['tutor_fname'])){
-            echo '<li class="nav-item">
-            <a class="nav-link" href="login.php">Login</a>
-          </li>';
-          }else{
-            echo '<li class="nav-item">
-            <a class="nav-link" href="logout.php">Logout</a>
-          </li>';
-          }
-        ?>
+        <ul class="navbar-nav">
+          <li class="nav-item "><a class="nav-link m-3 " href="index.php?home"><i class="fa-solid fa-gauge  p-2"></i>Dashboard</a></li>
+          <li class="nav-item "><a class="nav-link m-3" href="courses.php?courses"><i class="fa-solid fa-graduation-cap  p-2"></i>Courses</a></li>
+          <li class="nav-item "><a class="nav-link m-3" href="viewqueries.php?viewqueries"><i class="fa-solid fa-question  p-2"></i>View Queries</a></li>
+          <li class="nav-item "><a class="nav-link m-3" href="addcourses.php"><i class="fa-solid fa-graduation-cap p-2"></i>Add Course</a></li>
+          <li class="nav-item "><a class="nav-link m-3" href="profile.php?profile"><i class="fa-solid fa-user  p-2"></i>Profile</a></li>
         </ul>
-      
       </div>
     </div>
   </div>

@@ -2,31 +2,35 @@
 
 include('./connection.php');
 
-if(isset($_POST['edit'])){
 
-    $tutor_fname= $_SESSION['tutor_fname'];
-    $select_query="select * from `registration` where tutor_fname='$tutor_fname'";
-    $result=mysqli_query($con,$select_query);
-    $fetch_row=mysqli_fetch_assoc($result);
-    $tutor_id=$fetch_row['tutor_id'];
-    $tutor_fname=$fetch_row['tutor_fname'];
-    $tutor_lname=$fetch_row['tutor_lname'];
-    $tutor_email=$fetch_row['tutor_email'];
-    $tutor_password=$fetch_row['tutor_password'];
-   
+$select_query="select * from `registration`";
+$result=mysqli_query($con,$select_query);
+while($row_fetch=mysqli_fetch_assoc($result)){
+    $tutor_id = $row_fetch['tutor_id']; // Fetch the tutor_id
+
+$tutor_fname=$row_fetch['tutor_fname'];
+$tutor_lname=$row_fetch['tutor_lname'];
+$tutor_email=$row_fetch['tutor_email'];
+$tutor_pic=$row_fetch['tutor_pic'];
+$tutor_password=$row_fetch['tutor_password'];
+}
+
+?>
+<?php  
 
     if(isset($_POST['updateaccount'])){
-        $tutor_id=$tutor_id;
-        $tutor_fname=$fetch_row['tutor_fname'];
-        $tutor_lname=$fetch_row['tutor_lname'];
-        $tutor_email=$fetch_row['tutor_email'];
-        $tutor_password=$fetch_row['tutor_password'];
+
+        // $tutor_id=$tutor_id;
+        $tutor_id = $tutor_id; // Fetch the tutor_id
+        $tutor_fname=$_POST['tutor_fname'];
+        $tutor_lname=$_POST['tutor_lname'];
+        $tutor_email=$_POST['tutor_email'];
+        $tutor_password=$_POST['tutor_password'];
         $tutor_pic=$_FILES['tutor_pic']['name'];
-        $tutor_tmp=$_FILES['tutor_pc']['tmp_name'];
-        move_uploaded_file($tutor_tmp,"./Auth/profileimg/$tutor_pic");
+        $tutor_pic_tmp=$_FILES['tutor_pic']['tmp_name'];
+        move_uploaded_file($tutor_pic_tmp,"./Auth/profileimg/$tutor_pic");
         //update query
-        $update_query="update `registration` set tutor_fname='$tutor_fname',tutor_lname='$tutor_lname',
-        tutor_email='$tutor_email',tutor_pic='$tutor_pic',
+        $update_query="update `registration` set tutor_fname='$tutor_fname',tutor_lname='$tutor_lname',tutor_email='$tutor_email',tutor_pic='$tutor_pic',tutor_password='$tutor_password'
         where tutor_id=$tutor_id";
         $result_query_update=mysqli_query($con,$update_query);
         if($result_query_update){
@@ -34,11 +38,10 @@ if(isset($_POST['edit'])){
             echo "<script>window.open('logout.php','_self')</script>";
 
         }
-
     }
-    
-    
-}
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,7 +62,7 @@ if(isset($_POST['edit'])){
         <form action="" method="post" enctype="multipart/form-data">
             <label for="fullname">	
                 <p class="text">tutor fname</p>
-                <input type="text"  tutor_lname name="tutor_fname" placeholder="Enter Name.." autofocus>
+                <input type="text"  value="<?php echo $tutor_fname ?>"  name="tutor_fname" placeholder="Enter Name..">
             </label>
             <label for="fullname">	
                 <p class="text">tutor lname</p>
@@ -71,7 +74,8 @@ if(isset($_POST['edit'])){
             </label>
             <label for="email">
                 <p class="text">Profile</p>
-                <input type="file" value="<?php echo $tutor_pic ?>"   placeholder="Enter email" name="tutor_pic">
+                <input type="file"  placeholder="Enter email" name="tutor_pic">
+                <img src="./Auth/profileimg/<?php echo $tutor_pic ?>" alt="user_image" class="editimage">;
             </label>
             <label for="contact">
                 <p class="text">password</p>
@@ -82,8 +86,8 @@ if(isset($_POST['edit'])){
                 <p class="text">confirm password</p>
                 <input type="password" name="confirm_password" placeholder="Enter specialty">
             </label> -->
-            <button class="btn1" type="submit" name="edit">register</button>
-            <p>Have an account? <a href="login.php">click here</a></p>
+            <button class="btn1" type="submit" name="updateaccount">update</button>
+            <p> <a href="profile.php">Go Back to profile</a></p>
         </form>
     </fieldset>
     </div>
