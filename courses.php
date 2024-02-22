@@ -72,7 +72,7 @@ while($fetch_course = mysqli_fetch_assoc($course_result)){
 ?>
 <div class=" webdesign">
     <h4><?php echo $course_name; ?></h4>
-    <p><?php echo $course_description; ?></p>
+      <p><?php echo $course_description; ?></p>
     <P class="d-flex  gap-2">
       <?php
       if($course_status=='Active'){
@@ -85,8 +85,8 @@ while($fetch_course = mysqli_fetch_assoc($course_result)){
     ?>
   
   </P>
-    <P><?php echo $date_created; ?></P>
-    <P><?php echo $date_updated; ?></P>
+    <P><b>Date Created:</b>    <?php echo $date_created; ?></P>
+    <P><b>Date Updated: </b>   <?php echo $date_updated; ?></P>
 </div>
 <?php
 }

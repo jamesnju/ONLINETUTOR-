@@ -1,3 +1,21 @@
+body,html{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    font-family: sans-serif;
+    overflow: hidden;
+
+}
+.navigation{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
 .landing {
     display: flex;
     height: 100vh;
@@ -5,6 +23,14 @@
     background-image: url('./image/online\ background.jpg');
     background-size: cover; /* Adjusts the background image to cover the entire container */
     background-position: center; /* Centers the background image */
+    background-repeat: no-repeat;
+    text-align: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    flex-direction: column;
+    overflow: hidden;
+    animation: change 50s infinite ease-in-out;
 }
 .content1{
     max-width: 50%;
@@ -16,4 +42,54 @@
     margin: auto;
     background-color: gainsboro;
     padding: 18px;
+}
+.content2{
+    display: flex;
+    gap: 12rem;
+    width: 100%;
+
+}
+.content2 span{
+    background-color: black;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.content2 span >a{
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 2rem;
+    margin: 1px;
+    color: whitesmoke!important;
+    font-weight: 600;
+    width: 10rem;
+    
+    
+}
+@keyframes change{
+    0%{
+        background-image: url(./image/background/online\ background.jpg);
+    }
+    10%{
+        background-image: url(./image/background/download.png);
+    }20%{
+        background-image: url(./image/background/hand-drawn-online-tutor-illustration_23-2150939199.avif);
+    }30%{
+        background-image: url(./image/background/istockphoto-537841230-612x612.jpg);
+    }40%{
+        background-image: url(./image/background/john-schnobrich-2FPjlAyMQTA-unsplash.jpg);
+    }50%{
+        background-image: url(./image/background/samantha-borges-EeS69TTPQ18-unsplash.jpg);
+    }60%{
+        background-image: url(./image/background/crop-hand-man-chalking-graph-blackboard_23-2148201000.avif);
+    }70%{
+        background-image: url(./image/background/dash2.avif);
+    }80%{
+        background-image: url(./image/background/hand-drawn-flat-design-tutoring-flyer_23-2149265999.avif);
+    }90%{
+        background-image: url(./image/background/hand-drawn-online-tutor-illustration_23-2150939199.avif);
+    }100%{
+        background-image: url(./image/background/dassh1.jpg);
+    }
 }

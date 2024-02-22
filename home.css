@@ -34,6 +34,9 @@ box-sizing: border-box;
     color: white;
     width: 20rem;
     border-radius: 15px;
+    box-shadow: 10px 10px 5px 0px rgba(107,99,99,0.75);
+-webkit-box-shadow: 10px 10px 5px 0px rgba(107,99,99,0.75);
+-moz-box-shadow: 10px 10px 5px 0px rgba(107,99,99,0.75);
 }
 .dashboard p {
     text-decoration: none;

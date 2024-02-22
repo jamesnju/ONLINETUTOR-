@@ -13,12 +13,25 @@
     justify-content: space-around;
     flex-wrap: wrap;
     gap: 10px;
+    flex-direction: column;
     padding: 0rem 10rem ;
+    overflow: hidden;
 
 }
 .webdesign{
+    box-shadow: 10px 10px 5px 0px rgba(107,99,99,0.75);
+-webkit-box-shadow: 10px 10px 5px 0px rgba(107,99,99,0.75);
+-moz-box-shadow: 10px 10px 5px 0px rgba(107,99,99,0.75);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
     background-color: #fff;
     height: auto;
     width: shrink;
     border-radius: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Show ellipsis (...) for overflowed text */
+
 }
+
+

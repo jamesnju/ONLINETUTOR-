@@ -62,14 +62,12 @@
                 <p class="text">Course Name</p>
                 <input type="text" name="course_name" placeholder="Enter Name.." autofocus required>
             </label>
-            <label for="email">
+            <label for="descripion">
                 <p class="text">course_description</p>
-                <input type="text" placeholder="Enter email" name="course_description" required>
+                <!-- <input type="text" placeholder="Enter email" name="course_description" required> -->
+                <textarea name="course_description" id="" cols="60" rows="10" maxlength="500"  placeholder="Max length of 500 word...." required></textarea>
             </label>
-            <!-- <label for="contact">
-                <p class="text">course_status</p>
-                <input type="text" name="course_status" placeholder="Enter contact.." required>
-            </label> -->
+    
             
             <label for="">
                 <p class="text">Name of the tutor</p>
