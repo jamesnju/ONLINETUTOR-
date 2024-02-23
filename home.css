@@ -37,6 +37,7 @@ box-sizing: border-box;
     box-shadow: 10px 10px 5px 0px rgba(107,99,99,0.75);
 -webkit-box-shadow: 10px 10px 5px 0px rgba(107,99,99,0.75);
 -moz-box-shadow: 10px 10px 5px 0px rgba(107,99,99,0.75);
+
 }
 .dashboard p {
     text-decoration: none;
@@ -52,4 +53,11 @@ box-sizing: border-box;
     background-image: url('./image/dash2.avif');
     background-size: cover; /* Adjusts the background image to cover the entire container */
     background-position: center;
+}
+footer{
+    margin-top: 10rem;
+    height: 20vh;
+}
+footer >p{
+    padding-top: 3rem;
 }

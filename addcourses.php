@@ -63,14 +63,14 @@
                 <input type="text" name="course_name" placeholder="Enter Name.." autofocus required>
             </label>
             <label for="descripion">
-                <p class="text">course_description</p>
+                <p class="text">Course  Description</p>
                 <!-- <input type="text" placeholder="Enter email" name="course_description" required> -->
                 <textarea name="course_description" id="" cols="60" rows="10" maxlength="500"  placeholder="Max length of 500 word...." required></textarea>
             </label>
     
             
             <label for="">
-                <p class="text">Name of the tutor</p>
+                <p class="text">Name of The Tutor</p>
                 <select name="tutor_name" id="">
                     <option value="select">select tutor</option>
                     <?php
@@ -96,6 +96,9 @@
     </fieldset>
     </div>
 </div>
+<footer class=" bg-dark">
+    <p class="text-light text-center">All rights Reserved &copy; 2024</p>
+  </footer>
 
 <script src="./main.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

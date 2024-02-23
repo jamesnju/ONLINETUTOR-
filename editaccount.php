@@ -57,28 +57,28 @@ $tutor_password=$row_fetch['tutor_password'];
  </head>
 <body>
 <div class="inquire d-flex">
-        <h2 class="text-center text-success w-100">edit Account</h2>
+        <h2 class="text-center text-success w-100">Edit Account Details</h2>
         <fieldset class="row">
         <form action="" method="post" enctype="multipart/form-data">
             <label for="fullname">	
-                <p class="text">tutor fname</p>
+                <p class="text">Tutor's First Name</p>
                 <input type="text"  value="<?php echo $tutor_fname ?>"  name="tutor_fname" placeholder="Enter Name..">
             </label>
             <label for="fullname">	
-                <p class="text">tutor lname</p>
+                <p class="text">Tutor Last Name</p>
                 <input type="text" name="tutor_lname"   value="<?php echo $tutor_lname ?>" placeholder="Enter Name..">
             </label>
             <label for="email">
                 <p class="text">Email</p>
                 <input type="email" value="<?php echo $tutor_email ?>"    placeholder="Enter email" name="tutor_email">
             </label>
-            <label for="email">
+            <label for="email"  class="ediimage">
                 <p class="text">Profile</p>
                 <input type="file"  placeholder="Enter email" name="tutor_pic">
                 <img src="./Auth/profileimg/<?php echo $tutor_pic ?>" alt="user_image" class="editimage">;
             </label>
             <label for="contact">
-                <p class="text">password</p>
+                <p class="text">Password</p>
                 <input type="password"  value="<?php echo $tutor_password ?>" name="tutor_password" placeholder="Enter contact..">
             </label>
             
@@ -91,6 +91,9 @@ $tutor_password=$row_fetch['tutor_password'];
         </form>
     </fieldset>
     </div>
+    <footer class=" bg-dark">
+        <p class="text-light text-center">All rights Reserved &copy; 2024</p>
+</footer>
     <script src="./main.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 

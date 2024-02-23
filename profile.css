@@ -15,19 +15,69 @@ fieldset{
     justify-content: center;
     align-items: center;
     background-color: gainsboro;
-    width: 60%;
-    height: 80vh;
+    width: 80%;
+    height: 100vh;
     border-radius: 20px;
     margin: auto;
     padding: 20px   40px;
     border: 12px solid black;
 }
-img{
-    height: 10rem;
-    object-fit: contain;
-    border-radius: 100%;
-}
 .image{
-    background-color: bisque;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    width: 50%;
+    height: 50vh;
+    max-height: min-content;
+    border-radius: 20px;
+    object-fit: contain;
+}
+
+img{
+   object-fit: contain;
+   width: 11rem;
+   border-radius: 90%;
+   margin-top: 2rem;
+   margin-bottom: 1rem;
+}
+.details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 20px;
+    height: 23rem;
+    width: 50%;
+}
+h2{
+    border: 2px solid  rgb(49, 223, 49);
+    width: 100%;
+    padding-left: 10rem;
+    margin: 2rem;
+}
+.links1{
+    display: flex;
+    background-color: #fff;
+    width: 50%;
+    justify-content: space-between;
+    padding: 2rem;
+    border-radius: 20px;
+    margin-bottom: 3rem;
+}
+.links1>a{
+    text-decoration: none;
+    font-size: 23px;
     
+}
+.links1 a:hover{
+    background-color: beige;
+}
+footer{
+    height: 20vh;
+}
+footer >p{
+    padding-top: 3rem;
 }

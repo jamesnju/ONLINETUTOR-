@@ -7,7 +7,11 @@
     overflow-y: scroll;
     padding-top: 5rem;
 }
+body{
+    overflow: hidden;
+}
 .courses{
+    margin-bottom: 2rem;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -32,6 +36,14 @@
     overflow: hidden;
     text-overflow: ellipsis; /* Show ellipsis (...) for overflowed text */
 
+}
+footer{
+    margin-top: 10rem;
+    height: 20vh;
+    width: 100%;
+}
+footer >p{
+    padding-top: 3rem;
 }
 
 

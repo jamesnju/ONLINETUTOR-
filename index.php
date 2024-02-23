@@ -138,6 +138,9 @@
   </div>
    
 </div>
+<footer class=" bg-dark">
+        <p class="text-light text-center">All rights Reserved &copy; 2024</p>
+</footer>
 
 
 

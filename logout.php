@@ -3,7 +3,7 @@
     session_unset();
     session_destroy();
     // echo "<script>alert('loggedout successfully')</script>";
-    echo '<script>window.open("./Auth/login.php","_self")</script>';
+    echo '<script>window.open("landing.php","_self")</script>';
 
 ?>
 

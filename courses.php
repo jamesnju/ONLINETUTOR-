@@ -54,9 +54,9 @@
     <h2 class=" text-success w-100 text-center col-12">Availabel Courses</h2>
         <div class="row courses">
         <?php
-$select_course= "select * from `course_list`";
-$course_result = mysqli_query($con, $select_course);
-while($fetch_course = mysqli_fetch_assoc($course_result)){
+    $select_course= "select * from `course_list`";
+    $course_result = mysqli_query($con, $select_course);
+    while($fetch_course = mysqli_fetch_assoc($course_result)){
     $course_id=$fetch_course['course_id'];
     $course_name = $fetch_course['course_name'];
     $course_description = $fetch_course['course_description'];
@@ -91,7 +91,11 @@ while($fetch_course = mysqli_fetch_assoc($course_result)){
 <?php
 }
 ?>
-        <?php include('./footer.php'); ?>
+        </div>
+        <footer class=" bg-dark">
+               <p class="text-light text-center">All rights Reserved &copy; 2024</p>
+       </footer>
+        
 
 <script src="./main.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

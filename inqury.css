@@ -9,7 +9,8 @@
 fieldset{
     display: flex;
     width: 60%;
-    height: 90vh;
+    height: auto;
+    max-height: min-content;
 background-color: #fff;
 box-shadow: 10px 10px 5px 0px rgba(107,99,99,0.75);
 -webkit-box-shadow: 10px 10px 5px 0px rgba(107,99,99,0.75);
@@ -65,4 +66,11 @@ textarea{
     outline: none;
     font-size: 17px;
     font-weight: 500;
+}
+footer{
+    margin-top: 15rem;
+    height: 20vh;
+}
+footer >p{
+    padding-top: 3rem;
 }

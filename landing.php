@@ -33,14 +33,12 @@
     <div class="d-flex justify-content-end">
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link text-light active" aria-current="page" href="#">Home</a>
+          <a class="nav-link text-light active" aria-current="page" href="landing.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-light" href="./about.php">About Us</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-light" href="./Auth/login.php">Service</a>
-        </li> 
+     
         <li class="nav-item">
           <a class="nav-link text-light" href="./inquiry.php">Inquire</a>
         </li>
@@ -68,6 +66,9 @@
   </div>
 
 </div>
+<footer class=" bg-dark">
+        <p class="text-light text-center">All rights Reserved &copy; 2024</p>
+  </footer>
 
 
 

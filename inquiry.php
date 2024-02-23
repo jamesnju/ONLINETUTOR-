@@ -41,59 +41,41 @@
 
 </head>
 <body>
-<!-- <nav class="navbar navbar-dark bg-dark fixed-top ">
+<nav class="navbar navbar-expand-lg bg-dark navigation">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Offcanvas dark navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+    <a class="navbar-brand text-light" href="#">OnlineTutor</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dark offcanvas</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-     
-      <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-          
-          
-          <li><a class="nav-link" href="index.php"><i class="fa-solid fa-gauge"></i>Dashboard</a></li>
-            <li><a class="nav-link" href="courses.php?courses"><i class="fa-solid fa-graduation-cap"></i>Courses</a></li>
-            <li><a class="nav-link" href="inquiry.php?inquiry"><i class="fa-solid fa-question"></i>Inquries</a></li>
-            <li><a class="nav-link" href="profile.php?profile"><i class="fa-solid fa-user"></i>Profile</a></li>
-            <!-- <li><a class="nav-link" href="./Auth/registration.php?register"><i class="fa-solid fa-user"></i>
-              
-            register
-          </a></li> -->
-          <?php 
-        //displays username if logged in
-    //     if(!isset($_SESSION['tutor_fname'])){
-    //       echo '<li class="nav-item">
-    //       <a class="nav-link" href="#"><i class="fa-solid fa-user"></i>Welcome Guest</a>
-    //     </li>';
-    //     }else{
-    //       echo '<li class="nav-item">
-    //       <a class="nav-link" href="#"><i class="fa-solid fa-user"></i>Welcome '.$_SESSION['tutor_fname'].'</a>
-    //     </li>';
-    //     }
-    //   ?>
-    //     <?php 
-    //       if(!isset($_SESSION['tutor_fname'])){
-    //         echo '<li class="nav-item">
-    //         <a class="nav-link" href="login.php">Login</a>
-    //       </li>';
-    //       }else{
-    //         echo '<li class="nav-item">
-    //         <a class="nav-link" href="logout.php">Logout</a>
-    //       </li>';
-    //       }
-        ?>
-        </ul>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- Leave the links here -->
+      </ul>
+    </div>
+    
+    <!-- Container for links with justify-content-end -->
+    <div class="d-flex justify-content-end">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link text-light active" aria-current="page" href="landing.php">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="./about.php">About Us</a>
+        </li>
       
-      </div>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="./inquiry.php">Inquire</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="./Auth/login.php">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="./Auth/registration.php">Register</a>
+        </li>
+      </ul>
     </div>
   </div>
-</nav> -->
+</nav>
 <div class="container-fluid">
     <div class="inquire d-flex">
         <h2 class="text-center text-success w-100">Inquries Form</h2>
@@ -144,6 +126,9 @@
     </fieldset>
     </div>
 </div>
+<footer class=" bg-dark">
+        <p class="text-light text-center">All rights Reserved &copy; 2024</p>
+  </footer>
 
 
 

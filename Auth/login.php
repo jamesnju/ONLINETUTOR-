@@ -14,7 +14,7 @@
             $data = mysqli_fetch_assoc($result_query);
             $_SESSION['tutor_fname'] = $fname;
             if(password_verify($password, $data['tutor_password'])){
-                echo "<script>alert('Login success')</script>";
+                // echo "<script>alert('Login success')</script>";
                 // Redirect to index.php or any other page after successful login
                 echo "<script>window.open('../index.php','_self')</script>";
             }

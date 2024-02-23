@@ -5,12 +5,18 @@
     margin-top: 5rem;
     border-radius: 20px;
     flex-wrap: wrap;
+    /* background-color: gainsboro; */
 }
 fieldset{
     display: flex;
     width: 60%;
-    height: 90vh;
-background-color: #fff;
+    height: max-content;
+    border: 1px solid black;
+    margin-bottom: 3rem;
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px 0px rgba(107,99,99,0.75);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(107,99,99,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(107,99,99,0.75);
 }
 form{
     display: flex;
@@ -44,4 +50,24 @@ input{
     outline: none;
     border-radius: 18px;
     border: none;
+}
+/* edit account */
+img{
+    /* width: 10rem; */
+    height: 15rem;
+    border: 2px solid  black;
+
+}
+.ediimage{
+    display: flex;
+}
+.ediimage>input{
+    width: 13rem;
+}
+footer{
+    margin-top: 20rem;
+    height: 20vh;
+}
+footer >p{
+    padding-top: 3rem;
 }
