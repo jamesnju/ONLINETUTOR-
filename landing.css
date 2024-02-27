@@ -65,9 +65,32 @@ body,html{
     color: whitesmoke!important;
     font-weight: 600;
     width: 10rem;
-    
+     
+}
+
+.about{
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 2rem;
+    align-items: center;
+}
+.believe{
+    border-radius: 20px;
+    background-color: gainsboro;
+    margin-top: 3rem;
+    max-width: 60%;
+    padding: 4rem;
+    align-items: center;
+    box-shadow: 10px 10px 5px 0px rgba(107,99,99,0.75);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(107,99,99,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(107,99,99,0.75);
     
 }
+h4{
+    color: blue;
+    border-bottom: 1px  solid black;}
 footer{
     height: 20vh;
 }

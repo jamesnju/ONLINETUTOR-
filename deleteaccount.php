@@ -1,8 +1,12 @@
 <?php
 include('./connection.php');
 session_start(); // Start the session
+if (!isset($_SESSION['tutor_fname'])) {
+    // Redirect to the login page
+    header("Location: ./Auth/login.php");
+    exit();
+}
 
-// Rest of your PHP code goes here...
 ?>
 <!DOCTYPE html>
 <html lang="en">

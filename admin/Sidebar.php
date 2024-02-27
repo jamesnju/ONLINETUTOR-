@@ -1,9 +1,10 @@
 <?php
-    include("./connection.php");
+    include("../connection.php");
     session_start();
+
     if (!isset($_SESSION['tutor_fname'])) {
       // Redirect to the login page
-      header("Location: ./Auth/login.php");
+      header("Location: login.php");
       exit();
   }
 
@@ -38,10 +39,10 @@
     <!-- Move Welcome section to the right -->
     <div class="d-flex flex-row-reverse">
       <?php if(!isset($_SESSION['tutor_fname'])) : ?>
-        <a class="nav-link text-light me-3" href="/Auth/login.php"><i class="fa-solid fa-user"></i>Welcome Guest</a>
-        <a class="nav-link text-light me-3" href="./Auth/login.php">Login</a>
+        <a class="nav-link text-light me-3" href="login.php"><i class="fa-solid fa-user"></i>Admin  </a>
+        <a class="nav-link text-light me-3" href="login.php">Login</a>
       <?php else : ?>
-        <a class="nav-link text-light me-3" href="profile.php"><i class="fa-solid fa-user"></i>Welcome <?php echo $_SESSION['tutor_fname']; ?></a>
+        <a class="nav-link text-light me-3" href="#"><i class="fa-solid fa-user"></i>Admin <?php echo $_SESSION['tutor_fname']; ?></a>
         <a class="nav-link text-light me-3" href="logout.php">Logout</a>
       <?php endif; ?>
     </div>
@@ -54,11 +55,14 @@
      
       <div class="offcanvas-body">
         <ul class="navbar-nav">
-          <li class="nav-item "><a class="nav-link m-3 " href="index.php?home"><i class="fa-solid fa-gauge  p-2"></i>Dashboard</a></li>
-          <li class="nav-item "><a class="nav-link m-3" href="courses.php?courses"><i class="fa-solid fa-graduation-cap  p-2"></i>Courses</a></li>
-          <li class="nav-item "><a class="nav-link m-3" href="viewqueries.php?viewqueries"><i class="fa-solid fa-question  p-2"></i>View Queries</a></li>
-          <li class="nav-item "><a class="nav-link m-3" href="addcourses.php"><i class="fa-solid fa-graduation-cap p-2"></i>Add Course</a></li>
-          <li class="nav-item "><a class="nav-link m-3" href="profile.php?profile"><i class="fa-solid fa-user  p-2"></i>Profile</a></li>
+          <li class="nav-item "><a class="nav-link m-2 " href="index.php?home"><i class="fa-solid fa-gauge  p-1"></i>Dashboard</a></li>
+          <li class="nav-item "><a class="nav-link m-2" href="courses.php?courses"><i class="fa-solid fa-graduation-cap  p-1"></i>Courses</a></li>
+          <li class="nav-item "><a class="nav-link m-2" href="viewqueries.php?viewqueries"><i class="fa-solid fa-question  p-1"></i>View Queries</a></li>
+          <li class="nav-item "><a class="nav-link m-2" href="addcourses.php"><i class="fa-solid fa-graduation-cap p-1"></i>Add Course</a></li>
+          <li class="nav-item "><a class="nav-link m-2" href="adduser.php?adduser"><i class="fa-solid fa-user  p-1"></i>Add Users</a></li>
+          <!-- <li class="nav-item "><a class="nav-link m-2" href="e.php?profile"><i class="fa-solid fa-user  p-1"></i>Edit  course</a></li> -->
+          <li class="nav-item "><a class="nav-link m-2" href="viewusers.php?viewUsers"><i class="fa-solid fa-question  p-1"></i>View users</a></li>
+          <!-- <li class="nav-item "><a class="nav-link m-2" href="viewcourse.php?viewcourse"><i class="fa-solid fa-question  p-1"></i>View course</a></li> -->
         </ul>
       </div>
     </div>
@@ -82,6 +86,27 @@
     if(isset($_POST['register'])){
         include('register.php');
     }
+    if(isset($_POST['viewUsers'])){
+      include('viewusers.php');
+  }
+  if(isset($_POST['viewcourse'])){
+    include('viewcourse.php');
+}
+  if(isset($_GET['delete_users'])){
+    include('deleteuser.php');
+}
+if(isset($_POST['adduser'])){
+  include('addusers.php');
+}
+if(isset($_GET['deletecourse'])){
+  include('deletecourse.php');
+}
+if(isset($_GET['editcourse'])){
+  include('editcourse.php');
+}
+if(isset($_GET['deleteinqury'])){
+  include('deleteinqury.php');
+}
 
 
     ?>

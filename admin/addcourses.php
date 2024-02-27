@@ -1,9 +1,10 @@
 <?php
-    include("./connection.php");
+    include("../connection.php");
     session_start();
+
     if (!isset($_SESSION['tutor_fname'])) {
       // Redirect to the login page
-      header("Location: ./Auth/login.php");
+      header("Location: login.php");
       exit();
   }
 
@@ -18,7 +19,7 @@
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="course.css"/> -->
-    <link rel="stylesheet" href="inqury.css">
+    <link rel="stylesheet" href="../inqury.css">
 
 
 </head>
@@ -31,10 +32,10 @@
     <!-- Move Welcome section to the right -->
     <div class="d-flex flex-row-reverse">
       <?php if(!isset($_SESSION['tutor_fname'])) : ?>
-        <a class="nav-link text-light me-3" href="/Auth/login.php"><i class="fa-solid fa-user"></i>Welcome Guest</a>
+        <a class="nav-link text-light me-3" href="/Auth/login.php"><i class="fa-solid fa-user"></i>Admin  </a>
         <a class="nav-link text-light me-3" href="./Auth/login.php">Login</a>
       <?php else : ?>
-        <a class="nav-link text-light me-3" href="profile.php"><i class="fa-solid fa-user"></i>Welcome <?php echo $_SESSION['tutor_fname']; ?></a>
+        <a class="nav-link text-light me-3" href="profile.php"><i class="fa-solid fa-user"></i>Admin <?php echo $_SESSION['tutor_fname']; ?></a>
         <a class="nav-link text-light me-3" href="logout.php">Logout</a>
       <?php endif; ?>
     </div>
@@ -47,11 +48,14 @@
      
       <div class="offcanvas-body">
         <ul class="navbar-nav">
-          <li class="nav-item "><a class="nav-link m-3 " href="index.php?home"><i class="fa-solid fa-gauge  p-2"></i>Dashboard</a></li>
-          <li class="nav-item "><a class="nav-link m-3" href="courses.php?courses"><i class="fa-solid fa-graduation-cap  p-2"></i>Courses</a></li>
-          <li class="nav-item "><a class="nav-link m-3" href="viewqueries.php?viewqueries"><i class="fa-solid fa-question  p-2"></i>View Queries</a></li>
-          <li class="nav-item "><a class="nav-link m-3" href="addcourses.php"><i class="fa-solid fa-graduation-cap p-2"></i>Add Course</a></li>
-          <li class="nav-item "><a class="nav-link m-3" href="profile.php?profile"><i class="fa-solid fa-user  p-2"></i>Profile</a></li>
+          <li class="nav-item "><a class="nav-link m-2 " href="index.php?home"><i class="fa-solid fa-gauge  p-1"></i>Dashboard</a></li>
+          <li class="nav-item "><a class="nav-link m-2" href="courses.php?courses"><i class="fa-solid fa-graduation-cap  p-1"></i>Courses</a></li>
+          <li class="nav-item "><a class="nav-link m-2" href="viewqueries.php?viewqueries"><i class="fa-solid fa-question  p-1"></i>View Queries</a></li>
+          <li class="nav-item "><a class="nav-link m-2" href="addcourses.php"><i class="fa-solid fa-graduation-cap p-1"></i>Add Course</a></li>
+          <li class="nav-item "><a class="nav-link m-2" href="adduser.php?adduser"><i class="fa-solid fa-user  p-1"></i>Add Users</a></li>
+          <!-- <li class="nav-item "><a class="nav-link m-2" href="e.php?profile"><i class="fa-solid fa-user  p-1"></i>Edit  course</a></li> -->
+          <li class="nav-item "><a class="nav-link m-2" href="viewusers.php?viewUsers"><i class="fa-solid fa-question  p-1"></i>View users</a></li>
+          <!-- <li class="nav-item "><a class="nav-link m-2" href="viewcourse.php?viewcourse"><i class="fa-solid fa-question  p-1"></i>View course</a></li> -->
         </ul>
       </div>
     </div>
@@ -95,7 +99,7 @@
             </label> -->
         
 
-            <button class="btn1" type="submit" name="addcourse">Submit</button>
+            <button class="btn1" type="submit" name="addcourse">Add Course</button>
             <!-- <p>Have an account? <a href="login.php">click here</a></p> -->
         </form>
     </fieldset>
@@ -128,6 +132,8 @@
                     VALUES ('$tutor_id','$course_name','$course_description','$course_status',Now(),Now())";
                     $result_insert = mysqli_query($con,$insert_query);
                     echo "<script>alert('course added successfully')</script>";
+                    echo "<script>window.open('courses.php','_self')</script>";
+
                 }
 
                 

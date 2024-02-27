@@ -1,30 +1,27 @@
 <?php
-include("./connection.php");
+// confirm.php
+include("../connection.php");
 session_start();
-if (!isset($_SESSION['tutor_fname'])) {
-    // Redirect to the login page
-    header("Location: ./Auth/login.php");
-    exit();
-}
 
-// Check if the course_id is received from the URL
 if(isset($_GET['course_id'])) {
     $course_id = $_GET['course_id'];
-    
-    // Update the course status to 'Inactive' in the database
-    $update_query = "UPDATE `course_list` SET course_status='Inactive' WHERE course_id=$course_id";
+
+    // Update the course status to 'Active'
+    $update_query = "UPDATE `course_list` SET course_status='Active' WHERE course_id=$course_id";
     $result = mysqli_query($con, $update_query);
-    
+
     if($result) {
-        echo "<script>alert('Course status updated to Inactive')</script>";
+        // Status updated successfully, redirect back to courses.php
+        header("Location: courses.php");
+        exit(); // Ensure script execution stops after redirection
     } else {
+        // Handle update failure
         echo "<script>alert('Failed to update course status')</script>";
     }
+} else {
+    // Handle case where course_id parameter is not provided
+    echo "<script>alert('Invalid request')</script>";
 }
-
-// Fetch and display the courses
-$select_course= "SELECT * FROM `course_list`";
-$course_result = mysqli_query($con, $select_course);
 ?>
 
 <!DOCTYPE html>

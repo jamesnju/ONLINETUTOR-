@@ -1,6 +1,12 @@
 <?php
 
 include('./connection.php');
+session_start();
+if (!isset($_SESSION['tutor_fname'])) {
+    // Redirect to the login page
+    header("Location: ./Auth/login.php");
+    exit();
+}
 
 
 $select_query="select * from `registration`";

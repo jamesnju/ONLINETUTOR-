@@ -79,7 +79,7 @@
 <div class="container-fluid">
     <div class="inquire d-flex">
         <h2 class="text-center text-success w-100">Inquries Form</h2>
-        <fieldset class="row">
+        <fieldset class="row  bg-dark">
         <form action="" method="post" enctype="multipart/form-data">
             <label for="fullname">
                 <p class="text">Full Name</p>

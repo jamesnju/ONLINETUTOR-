@@ -16,6 +16,8 @@ body{
     align-items: center;
     justify-content: space-around;
     flex-wrap: wrap;
+    margin: auto;
+
     gap: 10px;
     flex-direction: column;
     padding: 0rem 10rem ;
@@ -28,8 +30,11 @@ body{
 -moz-box-shadow: 10px 10px 5px 0px rgba(107,99,99,0.75);
     display: flex;
     flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
     flex-wrap: wrap;
     background-color: #fff;
+    /* margin: auto; */
     height: auto;
     width: shrink;
     border-radius: 20px;

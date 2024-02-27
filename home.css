@@ -54,6 +54,15 @@ box-sizing: border-box;
     background-size: cover; /* Adjusts the background image to cover the entire container */
     background-position: center;
 }
+.img1{
+    margin-top: -15rem;
+    display: flex;
+    height: 50vh;
+    width: 100%;
+    background-image: url('./image/background/john-schnobrich-2FPjlAyMQTA-unsplash.jpg');
+    background-size: cover; /* Adjusts the background image to cover the entire container */
+    background-position: center;
+}
 footer{
     margin-top: 10rem;
     height: 20vh;

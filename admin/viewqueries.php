@@ -1,10 +1,10 @@
 <?php
-    include("./connection.php");
+    include("../connection.php");
     session_start();
 
     if (!isset($_SESSION['tutor_fname'])) {
       // Redirect to the login page
-      header("Location: ./Auth/login.php");
+      header("Location: login.php");
       exit();
   }
 
@@ -32,10 +32,10 @@
     <!-- Move Welcome section to the right -->
     <div class="d-flex flex-row-reverse">
       <?php if(!isset($_SESSION['tutor_fname'])) : ?>
-        <a class="nav-link text-light me-3" href="/Auth/login.php"><i class="fa-solid fa-user"></i>Welcome Guest</a>
+        <a class="nav-link text-light me-3" href="/Auth/login.php"><i class="fa-solid fa-user"></i>Admin  </a>
         <a class="nav-link text-light me-3" href="./Auth/login.php">Login</a>
       <?php else : ?>
-        <a class="nav-link text-light me-3" href="profile.php"><i class="fa-solid fa-user"></i>Welcome <?php echo $_SESSION['tutor_fname']; ?></a>
+        <a class="nav-link text-light me-3" href="profile.php"><i class="fa-solid fa-user"></i>Admin <?php echo $_SESSION['tutor_fname']; ?></a>
         <a class="nav-link text-light me-3" href="logout.php">Logout</a>
       <?php endif; ?>
     </div>
@@ -48,11 +48,14 @@
      
       <div class="offcanvas-body">
         <ul class="navbar-nav">
-          <li class="nav-item "><a class="nav-link m-3 " href="index.php?home"><i class="fa-solid fa-gauge  p-2"></i>Dashboard</a></li>
-          <li class="nav-item "><a class="nav-link m-3" href="courses.php?courses"><i class="fa-solid fa-graduation-cap  p-2"></i>Courses</a></li>
-          <li class="nav-item "><a class="nav-link m-3" href="viewqueries.php?viewqueries"><i class="fa-solid fa-question  p-2"></i>View Queries</a></li>
-          <li class="nav-item "><a class="nav-link m-3" href="addcourses.php"><i class="fa-solid fa-graduation-cap p-2"></i>Add Course</a></li>
-          <li class="nav-item "><a class="nav-link m-3" href="profile.php?profile"><i class="fa-solid fa-user  p-2"></i>Profile</a></li>
+          <li class="nav-item "><a class="nav-link m-2 " href="index.php?home"><i class="fa-solid fa-gauge  p-1"></i>Dashboard</a></li>
+          <li class="nav-item "><a class="nav-link m-2" href="courses.php?courses"><i class="fa-solid fa-graduation-cap  p-1"></i>Courses</a></li>
+          <li class="nav-item "><a class="nav-link m-2" href="viewqueries.php?viewqueries"><i class="fa-solid fa-question  p-1"></i>View Queries</a></li>
+          <li class="nav-item "><a class="nav-link m-2" href="addcourses.php"><i class="fa-solid fa-graduation-cap p-1"></i>Add Course</a></li>
+          <li class="nav-item "><a class="nav-link m-2" href="adduser.php?adduser"><i class="fa-solid fa-user  p-1"></i>Add Users</a></li>
+          <!-- <li class="nav-item "><a class="nav-link m-2" href="e.php?profile"><i class="fa-solid fa-user  p-1"></i>Edit  course</a></li> -->
+          <li class="nav-item "><a class="nav-link m-2" href="viewusers.php?viewUsers"><i class="fa-solid fa-question  p-1"></i>View users</a></li>
+          <!-- <li class="nav-item "><a class="nav-link m-2" href="viewcourse.php?viewcourse"><i class="fa-solid fa-question  p-1"></i>View course</a></li> -->
         </ul>
       </div>
     </div>
@@ -71,6 +74,7 @@
                 <th class="bg-info">inquirer_contact</th>
                 <th class="bg-info">message	</th>
                 <th class="bg-info">date_created</th>
+                <th class="bg-info">detele</th>
             </tr>
             </thead>
             <tbody>
@@ -94,6 +98,8 @@
                 <td class="bg-secondary text-light"><?php echo $inquirer_contact?></td>
                 <td class="bg-secondary text-light"><?php echo $message?></td>
                 <td class="bg-secondary text-light"><?php echo $date_created?></td>
+                <td class="bg-secondary text-light"><a href='Sidebar.php?deleteinqury=<?php echo $inquiry_id; ?>' class='text-dark'><i class='fa-solid fa-trash'></i></a></td>
+                
                 </tr>
                         <?php
                     }

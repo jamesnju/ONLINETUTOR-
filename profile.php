@@ -1,7 +1,12 @@
 <?php
     include("./connection.php");
     session_start();
-    // $tutor_fname = isset($_SESSION['tutor_fname']) ? $_SESSION['tutor_fname'] : '';
+
+    if (!isset($_SESSION['tutor_fname'])) {
+      // Redirect to the login page
+      header("Location: ./Auth/login.php");
+      exit();
+  }
 
 ?>
 <?php

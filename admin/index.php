@@ -1,13 +1,12 @@
 <?php
-    include("./connection.php");
+    include("../connection.php");
     session_start();
 
-    // Check if the user is logged in if  redirects him to  login page
     if (!isset($_SESSION['tutor_fname'])) {
-        // Redirect to the login page
-        header("Location: ./Auth/login.php");
-        exit();
-    }
+      // Redirect to the login page
+      header("Location: login.php");
+      exit();
+  }
 
 ?>
 <?php
@@ -80,7 +79,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sidebar</title>
-    <link rel="stylesheet" href="home.css"/>
+    <link rel="stylesheet" href="../home.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -95,10 +94,10 @@
     <!-- Move Welcome section to the right -->
     <div class="d-flex flex-row-reverse">
       <?php if(!isset($_SESSION['tutor_fname'])) : ?>
-        <a class="nav-link text-light me-3" href="/Auth/login.php"><i class="fa-solid fa-user"></i>Welcome Guest</a>
+        <a class="nav-link text-light me-3" href="/Auth/login.php"><i class="fa-solid fa-user"></i>Admin  </a>
         <a class="nav-link text-light me-3" href="./Auth/login.php">Login</a>
       <?php else : ?>
-        <a class="nav-link text-light me-3" href="profile.php"><i class="fa-solid fa-user"></i>Welcome <?php echo $_SESSION['tutor_fname']; ?></a>
+        <a class="nav-link text-light me-3" href="profile.php"><i class="fa-solid fa-user"></i>Admin <?php echo $_SESSION['tutor_fname']; ?></a>
         <a class="nav-link text-light me-3" href="logout.php">Logout</a>
       <?php endif; ?>
     </div>
@@ -111,36 +110,40 @@
      
       <div class="offcanvas-body">
         <ul class="navbar-nav">
-          <li class="nav-item "><a class="nav-link m-3 " href="index.php?home"><i class="fa-solid fa-gauge  p-2"></i>Dashboard</a></li>
-          <li class="nav-item "><a class="nav-link m-3" href="courses.php?courses"><i class="fa-solid fa-graduation-cap  p-2"></i>Courses</a></li>
-          <li class="nav-item "><a class="nav-link m-3" href="viewqueries.php?viewqueries"><i class="fa-solid fa-question  p-2"></i>View Queries</a></li>
-          <li class="nav-item "><a class="nav-link m-3" href="addcourses.php"><i class="fa-solid fa-graduation-cap p-2"></i>Add Course</a></li>
-          <li class="nav-item "><a class="nav-link m-3" href="profile.php?profile"><i class="fa-solid fa-user  p-2"></i>Profile</a></li>
+          <li class="nav-item "><a class="nav-link m-2 " href="index.php?home"><i class="fa-solid fa-gauge  p-1"></i>Dashboard</a></li>
+          <li class="nav-item "><a class="nav-link m-2" href="courses.php?courses"><i class="fa-solid fa-graduation-cap  p-1"></i>Courses</a></li>
+          <li class="nav-item "><a class="nav-link m-2" href="viewqueries.php?viewqueries"><i class="fa-solid fa-question  p-1"></i>View Queries</a></li>
+          <li class="nav-item "><a class="nav-link m-2" href="addcourses.php"><i class="fa-solid fa-graduation-cap p-1"></i>Add Course</a></li>
+          <li class="nav-item "><a class="nav-link m-2" href="adduser.php?adduser"><i class="fa-solid fa-user  p-1"></i>Add Users</a></li>
+          <!-- <li class="nav-item "><a class="nav-link m-2" href="e.php?profile"><i class="fa-solid fa-user  p-1"></i>Edit  course</a></li> -->
+          <li class="nav-item "><a class="nav-link m-2" href="viewusers.php?viewUsers"><i class="fa-solid fa-question  p-1"></i>View users</a></li>
+          <!-- <li class="nav-item "><a class="nav-link m-2" href="viewcourse.php?viewcourse"><i class="fa-solid fa-question  p-1"></i>View course</a></li> -->
         </ul>
       </div>
     </div>
   </div>
 </nav>
 <div class="container-fluid home">
+  <h3 class="text-center  text-success  w-100">Admin Dashboard</h3>
   <div class="main">
-    <div class="dashboard">
-      <p>Active Courses</p>
+    <div class="dashboard bg-light text-dark">
+      <p  class="text-dark">Active Courses</p>
       <h1><?php echo $activeCourses; ?></h1>
     </div>
-    <div class="dashboard">
-      <p>Inactive courses</p>
+    <div class="dashboard bg-light text-dark">
+      <p  class="text-dark">Inactive courses</p>
       <h1><?php echo $inactiveCourses; ?></h1>
     </div>
-    <div class="dashboard">
-      <p>Inquries</p>
+    <div class="dashboard bg-light text-dark">
+      <p  class="text-dark">Inquries</p>
       <h1><?php echo $totalinquires; ?></h1>
     </div>
-    <div class="dashboard">
-      <p>Total Courses</p>
+    <div class="dashboard bg-light text-dark">
+      <p  class="text-dark">Total Courses</p>
       <h1><?php echo  $totalcourses;?></h1>
     </div>
   </div>
-  <div class="img">
+  <div class="img1">
 
   </div>
    

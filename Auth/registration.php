@@ -7,6 +7,7 @@ if(isset($_POST['register'])){
     $fname = $_POST['tutor_fname'];
     $lname = $_POST['tutor_lname']; 
     $email = $_POST['tutor_email'];
+    $role=$_POST['role'];
     $password = $_POST['tutor_password'];
     $hash_password = password_hash($password,PASSWORD_DEFAULT);
     $confirm_password = $_POST['confirm_password'];
@@ -24,8 +25,8 @@ if(isset($_POST['register'])){
         echo  "<script>alert('password do not match')</script>";
         echo "<script>window.open('registration.php','_self')</script>";
     }else {
-        $insert_query = "INSERT INTO `registration` (tutor_fname, tutor_lname, tutor_email, tutor_pic, tutor_password, confirm_password) VALUES 
-        ('$fname','$lname','$email','$pic', '$hash_password', '$hash_password')"; // Added closing parenthesis
+        $insert_query = "INSERT INTO `registration` (tutor_fname, tutor_lname, tutor_email, tutor_pic, role, tutor_password, confirm_password) VALUES 
+        ('$fname','$lname','$email','$pic','$role', '$hash_password', '$hash_password')"; // Added closing parenthesis
         $result = mysqli_query($con, $insert_query);
 
         /* store the image */
@@ -61,7 +62,7 @@ if(isset($_POST['register'])){
 <body>
 <div class="inquire d-flex">
         <h2 class="text-center text-success w-100">Registration Form</h2>
-        <fieldset class="row">
+        <fieldset class="row bg-dark">
         <form action="" method="post" enctype="multipart/form-data">
             <label for="fullname">	
                 <p class="text">tutor fname</p>
@@ -75,18 +76,22 @@ if(isset($_POST['register'])){
                 <p class="text">Email</p>
                 <input type="email" placeholder="Enter email" name="tutor_email">
             </label>
-            <label for="email">
+            <label for="pic">
                 <p class="text">Profile</p>
                 <input type="file" placeholder="Enter email" name="tutor_pic">
             </label>
+            <label for="pic">
+                <p class="text">Profile</p>
+                <input type="text" placeholder="Enter role" name="role">
+            </label>
             <label for="contact">
                 <p class="text">password</p>
-                <input type="password" name="tutor_password" placeholder="Enter contact..">
+                <input type="password" name="tutor_password" placeholder="Enter password*******">
             </label>
             
             <label for="message">
                 <p class="text">confirm password</p>
-                <input type="password" name="confirm_password" placeholder="Enter specialty">
+                <input type="password" name="confirm_password" placeholder="Enter confirm password*****">
             </label>
             <button class="btn1" type="submit" name="register">register</button>
             <p>Have an account? <a href="login.php">click here</a></p>
