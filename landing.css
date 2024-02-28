@@ -13,9 +13,12 @@ body,html{
     align-items: center;
     justify-content: space-between;
 }
-
-
-
+.navbar-brand{
+    margin-left: 7rem;
+}
+.navbar-nav{
+    margin-right: 8rem;
+}
 .landing {
     display: flex;
     height: 100vh;
@@ -33,39 +36,33 @@ body,html{
     animation: change 50s infinite ease-in-out;
 }
 .content1{
-    max-width: min-content;
+    /* max-width: min-content; */
     max-height: min-content;
     border-radius: 16px;
     align-items: center;
     justify-content: center;
     font-size: 18px;
-    width: auto;
+    width: 84%;
     margin: auto;
     background-color: gainsboro;
-    padding: 18px;
+    padding: 2rem;
 }
 .content2{
     display: flex;
     gap: 12rem;
     width: 100%;
+    font-size: 20px;
+    justify-content: space-around;
 
 }
-.content2 span{
-    background-color: black;
-    border-radius: 20px;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-}
-.content2 span >a{
+.content2 a{
     text-decoration: none;
-    text-transform: uppercase;
-    padding: 2rem;
-    margin: 1px;
-    color: whitesmoke!important;
-    font-weight: 600;
-    width: 10rem;
-     
+    background-color: black;
+    padding: 1rem;
+    border-radius: 20px;
+}
+.reverse1{
+    margin-left: 20rem;
 }
 
 .about{
@@ -80,8 +77,9 @@ body,html{
     border-radius: 20px;
     background-color: gainsboro;
     margin-top: 3rem;
-    max-width: 60%;
-    padding: 4rem;
+    max-width: 85%;
+    max-height: min-content;
+    padding: 1rem;
     align-items: center;
     box-shadow: 10px 10px 5px 0px rgba(107,99,99,0.75);
     -webkit-box-shadow: 10px 10px 5px 0px rgba(107,99,99,0.75);

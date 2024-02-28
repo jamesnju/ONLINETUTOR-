@@ -83,7 +83,7 @@
                 <select name="tutor_name" id="">
                     <option value="select">select tutor</option>
                     <?php
-                    $select_tutor = "select * from `registration`";
+                    $select_tutor = "select * from `registration` WHERE role = 'tutor'";
                     $result_tutor=mysqli_query($con, $select_tutor);
                 while($fetch_data=mysqli_fetch_assoc($result_tutor)){
                     $tutor_id=$fetch_data['tutor_id'];

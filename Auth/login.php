@@ -17,7 +17,11 @@
                 if ($data['role'] == 'admin') {
                     // Redirect admin to admin page
                     echo "<script>window.open('../admin/index.php','_self')</script>";
-                } else {
+                } else if($data['role']=='student'){
+                    echo "<script>window.open('../student/index.php','_self')</script>";
+                }
+                
+                else {
                     // Redirect user to user page
                     echo "<script>window.open('../index.php','_self')</script>";
                 }
@@ -49,7 +53,7 @@
  </head>
 <body>
 <div class="inquire d-flex">
-        <h2 class="text-center text-success w-100">Login Form</h2>
+        <h2 class="text-center text-dark w-100">Login Form</h2>
         <fieldset class="row bg-dark">
         <form method="post" enctype="multipart/form-data">
             <label for="email">
@@ -62,7 +66,7 @@
             </label>
             
             <button class="btn1" type="submit" name="login">Login</button>
-            <p>Don't have an account? <a href="registration.php">click here</a></p>
+            <p  class="text-light">Don't have an account? <a href="registration.php">click here</a></p>
         </form>
     </fieldset>
     </div>

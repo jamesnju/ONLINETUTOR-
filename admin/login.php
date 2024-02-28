@@ -64,7 +64,7 @@
             
         
             <button class="btn1" type="submit" name="login">Login</button>
-            <p>Don't have an account? <a href="registration.php">click here</a></p>
+            <p class="text-light">Don't have an account? <a href="registration.php" class="text-decoration-none text-danger">click here</a></p>
         </form>
     </fieldset>
     </div>

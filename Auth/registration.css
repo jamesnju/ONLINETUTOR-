@@ -30,6 +30,7 @@ form{
 .text{
     font-size: 28px;
     font-weight: 400;
+    color: ghostwhite;
 }
 input{
     width: 30rem;

@@ -65,11 +65,11 @@ if(isset($_POST['register'])){
         <fieldset class="row bg-dark">
         <form action="" method="post" enctype="multipart/form-data">
             <label for="fullname">	
-                <p class="text">tutor fname</p>
+                <p class="text">Tutor First Name</p>
                 <input type="text" name="tutor_fname" placeholder="Enter Name.." autofocus>
             </label>
             <label for="fullname">	
-                <p class="text">tutor lname</p>
+                <p class="text">Tutor Last Name</p>
                 <input type="text" name="tutor_lname" placeholder="Enter Name..">
             </label>
             <label for="email">
@@ -85,16 +85,16 @@ if(isset($_POST['register'])){
                 <input type="text" placeholder="Enter role" name="role">
             </label>
             <label for="contact">
-                <p class="text">password</p>
+                <p class="text">Password</p>
                 <input type="password" name="tutor_password" placeholder="Enter password*******">
             </label>
             
             <label for="message">
-                <p class="text">confirm password</p>
+                <p class="text">Confirm Password</p>
                 <input type="password" name="confirm_password" placeholder="Enter confirm password*****">
             </label>
-            <button class="btn1" type="submit" name="register">register</button>
-            <p>Have an account? <a href="login.php">click here</a></p>
+            <button class="btn1 text-light" type="submit" name="register">Register</button>
+            <p  class="text-light">Have an account? <a href="login.php" class="text-danger  text-decoration">click here</a></p>
         </form>
     </fieldset>
     </div>

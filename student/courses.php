@@ -1,5 +1,5 @@
 <?php
-    include("./connection.php");
+    include("../connection.php");
     session_start();
     if (!isset($_SESSION['tutor_fname'])) {
       // Redirect to the login page
@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="course.css"/>
+    <link rel="stylesheet" href="../course.css"/>
 
 </head>
 <body>
@@ -29,7 +29,7 @@
     <!-- Move Welcome section to the right -->
     <div class="d-flex flex-row-reverse">
       <?php if(!isset($_SESSION['tutor_fname'])) : ?>
-        <a class="nav-link text-light me-3" href="/Auth/login.php"><i class="fa-solid fa-user"></i>Welcome Guest</a>
+        <a class="nav-link text-light me-3" href="./Auth/login.php"><i class="fa-solid fa-user"></i>Welcome Guest</a>
         <a class="nav-link text-light me-3" href="./Auth/login.php">Login</a>
       <?php else : ?>
         <a class="nav-link text-light me-3" href="profile.php"><i class="fa-solid fa-user"></i>Welcome <?php echo $_SESSION['tutor_fname']; ?></a>
@@ -47,8 +47,8 @@
         <ul class="navbar-nav">
           <li class="nav-item "><a class="nav-link m-3 " href="index.php?home"><i class="fa-solid fa-gauge  p-2"></i>Dashboard</a></li>
           <li class="nav-item "><a class="nav-link m-3" href="courses.php?courses"><i class="fa-solid fa-graduation-cap  p-2"></i>Courses</a></li>
-          <li class="nav-item "><a class="nav-link m-3" href="viewqueries.php?viewqueries"><i class="fa-solid fa-question  p-2"></i>View Queries</a></li>
-          <li class="nav-item "><a class="nav-link m-3" href="addcourses.php"><i class="fa-solid fa-graduation-cap p-2"></i>Add Course</a></li>
+          <li class="nav-item "><a class="nav-link m-3" href="inquiry.php?inquiry"><i class="fa-solid fa-question  p-2"></i>Queries</a></li>
+          <!-- <li class="nav-item "><a class="nav-link m-3" href="addcourses.php"><i class="fa-solid fa-graduation-cap p-2"></i>Add Course</a></li> -->
           <li class="nav-item "><a class="nav-link m-3" href="profile.php?profile"><i class="fa-solid fa-user  p-2"></i>Profile</a></li>
         </ul>
       </div>
@@ -83,7 +83,7 @@
       if($course_status=='Active'){
         echo "<td class='text-success'><h4  class='text-success'>Active</h4></td>";
         }else{
-            echo "<td class='bg-secondary text-light'><a  class='text-danger text-decoration-none'><h4  class='text-danger '>Inctive</h4></a></td>
+            echo "<td class='bg-secondary text-light'><a  class='text-danger  text-decoration-none'><h4  class='text-danger'>Inctive</h4></a></td>
             </tr>";
         }
       

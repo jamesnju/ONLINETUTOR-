@@ -11,7 +11,8 @@ fieldset{
     width: 60%;
     height: auto;
     max-height: min-content;
-background-color: #fff;
+background-color: gainsboro;
+border-radius: 20px;
 box-shadow: 10px 10px 5px 0px rgba(107,99,99,0.75);
 -webkit-box-shadow: 10px 10px 5px 0px rgba(107,99,99,0.75);
 -moz-box-shadow: 10px 10px 5px 0px rgba(107,99,99,0.75);

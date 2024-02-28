@@ -14,13 +14,13 @@ body{
     margin-bottom: 2rem;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: start;
     flex-wrap: wrap;
     margin: auto;
-
-    gap: 10px;
-    flex-direction: column;
-    padding: 0rem 10rem ;
+    /* background-color: black; */
+    gap: 15px;
+    width: 100%;
+    padding: 1rem ;
     overflow: hidden;
 
 }
@@ -29,17 +29,16 @@ body{
 -webkit-box-shadow: 10px 10px 5px 0px rgba(107,99,99,0.75);
 -moz-box-shadow: 10px 10px 5px 0px rgba(107,99,99,0.75);
     display: flex;
-    flex-direction: column;
     /* align-items: center; */
     justify-content: center;
     flex-wrap: wrap;
     background-color: #fff;
+    flex-direction: column;
     /* margin: auto; */
-    height: auto;
-    width: shrink;
+    height: 25rem;
+    width: 32%;
     border-radius: 20px;
-    overflow: hidden;
-    text-overflow: ellipsis; /* Show ellipsis (...) for overflowed text */
+    /* overflow: hidden; */
 
 }
 footer{
