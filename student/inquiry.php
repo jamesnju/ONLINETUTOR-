@@ -103,7 +103,7 @@
             
             <label for="message">
                 <p class="text">Message</p>
-                <input type="text" name="message" placeholder="Enter specialty" required>
+                <input type="text" name="message" placeholder="Enter message.." required>
             </label>
             <label for="">
 

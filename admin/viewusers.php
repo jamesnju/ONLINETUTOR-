@@ -117,7 +117,7 @@
                     <td class="bg-secondary text-light "><?php echo $username; ?></td>
                     <td class="bg-secondary text-light "><?php echo $usersecondname ?></td>
                     <td class="bg-secondary text-light "><?php echo $user_email; ?></td>
-                    <td class="bg-secondary text-light "><img class="tutorimage" src="../image/<?php echo $user_image; ?>"></td>
+                    <td class="bg-secondary text-light "><img class="tutorimage" src="../Auth/profileimg/<?php echo $user_image; ?>"></td>
 
                     <td class="bg-secondary text-light">
                     <a href='Sidebar.php?delete_users=<?php echo $user_id; ?>'

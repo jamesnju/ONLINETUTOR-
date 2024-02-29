@@ -55,12 +55,13 @@
 
 <div class="landing">
   <div class="content1">
-  <h2 class="text-info">Who we are and what we do</h2>
+  <h2 class="text-info  text-center p-1">WELCOME</h2>
+  <!-- <h2 class="text-info">Who we are and what we do</h2> -->
     <p>Our tutors are teachers, professors, adjuncts, PhD students, and industry professionals who are all passionate about their areas of expertise and eager to help students learn.
     We help learners of all ages and stages—from kindergarten through college, continuing education, and career. Our tutors provide empowering, encouraging support to help students complete their assignments, improve their grades, and persist in their studies. Every day, thousands of students share positive feedback about their online tutoring experiences.
     Our online tutoring platform makes connecting with students (and earning extra income!) simple, convenient, and flexible.
     <div class="content2  d-flex">
-      <h2 class="text-info  bg-dark p-1">WELCOME</h2>
+      
       <span ><a href="./Auth/registration.php"  class="text-light" >Get Started</a></span>
     </div>
   </div>
@@ -70,7 +71,7 @@
 <div class="about"  id="about">
   <h2 class="text-success text-center">About Us</h2>
     <div class="believe">
-    <h4 class="text-info">Our Beliefs</h4>
+    <!-- <h4 class="text-info">Our Beliefs</h4> -->
 At Tutor.com, we believe that every student deserves a personal tutor, and we are dedicated to promoting equity, opportunity, and achievement for all learners. To that end, we partner with colleges and universities, K–12 schools and districts, public and state libraries, employee benefits programs, and the U.S. military to provide 24/7, on-demand, individualized tutoring and homework help in more than 250 subjects.
 
 Our mission is to instill hope, advance equity, and catalyze achievement in schools and communities. We do this by providing encouraging, empowering, and effective academic and professional support for learners of all ages and stages—from kindergarten through college, graduate school, career, and continuing education.

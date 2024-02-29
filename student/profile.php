@@ -75,7 +75,7 @@ $tutor_pic=$row_fetch['tutor_pic'];
     <div class="profile">
         <fieldset>
           <div class="image">
-            <?php echo  "<img src='./Auth/profileimg/$tutor_pic'> " ?>
+            <?php echo  "<img src='../Auth/profileimg/$tutor_pic'> " ?>
           </div>
           <div class="details">
             <h2><?php  echo  $tutor_fname;  ?></h2>

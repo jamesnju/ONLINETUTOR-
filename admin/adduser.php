@@ -17,6 +17,7 @@ if(isset($_POST['adduser'])){
   $password = $_POST['tutor_password'];
   $hash_password = password_hash($password,PASSWORD_DEFAULT);
   $confirm_password = $_POST['confirm_password'];
+  $role=$_POST['role'];
   $pic = $_FILES['tutor_pic']['name'];
   $pic_tmp = $_FILES['tutor_pic']['tmp_name'];
 
@@ -26,17 +27,17 @@ if(isset($_POST['adduser'])){
 
   if($row>0){
       echo  "<script>alert('username or email Exist')</script>";
-      echo "<script>window.open('registration.php','_self')</script>";
+      // echo "<script>window.open('registration.php','_self')</script>";
   }else if($password != $confirm_password){
       echo  "<script>alert('password do not match')</script>";
-      echo "<script>window.open('registration.php','_self')</script>";
+      // echo "<script>window.open('registration.php','_self')</script>";
   }else {
-      $insert_query = "INSERT INTO `registration` (tutor_fname, tutor_lname, tutor_email, tutor_pic, tutor_password, confirm_password) VALUES 
-      ('$fname','$lname','$email','$pic', '$hash_password', '$hash_password')"; // Added closing parenthesis
+      $insert_query = "INSERT INTO `registration` (tutor_fname, tutor_lname, tutor_email, tutor_pic,role, tutor_password, confirm_password) VALUES 
+      ('$fname','$lname','$email','$pic','$role', '$hash_password', '$hash_password')"; // Added closing parenthesis
       $result = mysqli_query($con, $insert_query);
 
       /* store the image */
-      move_uploaded_file($pic_tmp,"profileimg/$pic");
+      move_uploaded_file($pic_tmp,"../Auth/profileimg/$pic");
       echo "<script>alert('User Added')</script>";
   }
 
@@ -118,20 +119,24 @@ if(isset($_POST['adduser'])){
             </label>
             <label for="email">
                 <p class="text">Email</p>
-                <input type="email" placeholder="Enter email" name="tutor_email">
+                <input type="email" placeholder="Enter email.." name="tutor_email">
             </label>
             <label for="email">
                 <p class="text">Profile</p>
-                <input type="file" placeholder="Enter email" name="tutor_pic">
+                <input type="file" placeholder="Enter email.." name="tutor_pic">
+            </label>
+            <label for="pic">
+                <p class="text">Role</p>
+                <input type="text" placeholder="Enter role.." name="role">
             </label>
             <label for="contact">
                 <p class="text">Password</p>
-                <input type="password" name="tutor_password" placeholder="Enter contact..">
+                <input type="password" name="tutor_password" placeholder="Enter contact**">
             </label>
             
             <label for="message">
                 <p class="text">Confirm Password</p>
-                <input type="password" name="confirm_password" placeholder="Enter specialty">
+                <input type="password" name="confirm_password" placeholder="confirm password**">
             </label>
             <button class="btn1 text-light" type="submit" name="adduser">Add user</button>
             <!-- <p>Have an account? <a href="login.php">click here</a></p> -->

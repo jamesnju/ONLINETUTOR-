@@ -28,13 +28,11 @@ if(isset($_POST['register'])){
         $insert_query = "INSERT INTO `registration` (tutor_fname, tutor_lname, tutor_email, tutor_pic, role, tutor_password, confirm_password) VALUES 
         ('$fname','$lname','$email','$pic','$role', '$hash_password', '$hash_password')"; // Added closing parenthesis
         $result = mysqli_query($con, $insert_query);
-
         /* store the image */
         move_uploaded_file($pic_tmp,"profileimg/$pic");
         echo "<script>alert('success')</script>";
         echo "<script>window.open('login.php','_self')</script>";
     }
-
     
 }
 ?>
@@ -81,8 +79,8 @@ if(isset($_POST['register'])){
                 <input type="file" placeholder="Enter email" name="tutor_pic">
             </label>
             <label for="pic">
-                <p class="text">Profile</p>
-                <input type="text" placeholder="Enter role" name="role">
+                <p class="text">Role</p>
+                <input type="text" placeholder="Enter role.." name="role">
             </label>
             <label for="contact">
                 <p class="text">Password</p>
