@@ -65,6 +65,39 @@
    // Fetch the result for unavailable courses
    $inactiveRow = mysqli_fetch_assoc($inactiveResult);
    $inactiveCourses = $inactiveRow['inactive_courses'];
+
+
+   $approvedQuery = "SELECT COUNT(*) AS approved_courses FROM enrolled_courses WHERE enrollment_status = 'Approved'";
+   $approveResult = mysqli_query($con, $approvedQuery);
+   
+   if (!$approveResult) {
+       // Handle query error
+       die("Query failed: " . mysqli_error($con));
+   }
+   
+   // Fetch the result for waiting  approval courses
+   $approvedRow = mysqli_fetch_assoc($approveResult);
+   $approvedCourses = $approvedRow['approved_courses'];
+   
+   // Query to count unavailable courses
+   $waitingapprovalQuery = "SELECT COUNT(*) AS waiting_approval FROM enrolled_courses WHERE enrollment_status = 'Waiting Approval'";
+   $waitingResult = mysqli_query($con, $waitingapprovalQuery);
+   
+   if (!$waitingResult) {
+       // Handle query error
+       die("Query failed: " . mysqli_error($con));
+   }
+   
+   // Fetch the result for unavailable courses
+   $waitingRow = mysqli_fetch_assoc($waitingResult);
+   $waitingCourses = $waitingRow['waiting_approval'];
+
+
+
+
+
+
+
 ?>
 
 
@@ -124,14 +157,14 @@
   </div>
 </nav>
 <div class="container-fluid home">
-  <h3 class="text-center  text-success  w-100">Admin Dashboard</h3>
+  <h3 class="text-center  text-dark  w-100">Admin Dashboard</h3>
   <div class="main">
     <div class="dashboard bg-light text-dark">
       <p  class="text-dark">Active Courses</p>
       <h1><?php echo $activeCourses; ?></h1>
     </div>
     <div class="dashboard bg-light text-dark">
-      <p  class="text-dark">Inactive courses</p>
+      <p  class="text-danger">Inactive courses</p>
       <h1><?php echo $inactiveCourses; ?></h1>
     </div>
     <div class="dashboard bg-light text-dark">
@@ -139,9 +172,20 @@
       <h1><?php echo $totalinquires; ?></h1>
     </div>
     <div class="dashboard bg-light text-dark">
+      <p class="text-success">Approved</p>
+      <h1><?php echo $approvedCourses; ?></h1>
+    </div>
+    <div class="dashboard bg-light text-dark">
+      <p class="text-info">Waiting Approval</p>
+      <h1><?php echo  $waitingCourses; ?></h1>
+    </div>
+    <div class="dashboard bg-light text-dark">
       <p  class="text-dark">Total Courses</p>
       <h1><?php echo  $totalcourses;?></h1>
     </div>
+    
+    
+    
   </div>
   <div class="img1">
 

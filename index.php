@@ -182,6 +182,7 @@ $waitingCourses = $waitingRow['waiting_approval'];
       <p>Total Courses</p>
       <h1><?php echo  $totalcourses;?></h1>
     </div>
+    
   </div>
   <div class="img">
 

@@ -90,8 +90,7 @@
         }
       
     ?>
-  <span><a href="enrollment.php?enrollcourse&course_id=<?php echo $course_id; ?>&course_name=<?php echo urlencode($course_name); ?>&course_description=<?php echo urlencode($course_description);?>">Enroll</a></span>
-
+  
   
   </P>
     <P><b>Date Created:</b>    <?php echo $date_enrolled; ?></P>

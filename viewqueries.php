@@ -62,21 +62,37 @@
 <h2 class="text-center text-success mt-5">View inquires</h2>
 
 <table class="table table-bordered mt-5 h-100vh  pt-100px">
-        <thead >
-            <tr>
-                <th class="bg-info">inquiry_id</th>
-                <th class="bg-info">tutor_id</th>
-                <th class="bg-info">full_name</th>
-                <th class="bg-info">inqurer_email</th>
-                <th class="bg-info">inquirer_contact</th>
-                <th class="bg-info">message	</th>
-                <th class="bg-info">date_created</th>
-            </tr>
-            </thead>
+  <?php
+    $select_query = "select * from `inguiry_list`";
+    $result= mysqli_query($con, $select_query);
+    $row_count=mysqli_num_rows($result);
+    if($row_count==0){
+      echo"<h3 class='text-center text-danger mt-5'>No query  sent yet</h3>";
+
+    }else{
+      echo  '
+      <thead >
+      <tr>
+          <th class="bg-info">inquiry_id</th>
+          <th class="bg-info">tutor_id</th>
+          <th class="bg-info">full_name</th>
+          <th class="bg-info">inqurer_email</th>
+          <th class="bg-info">inquirer_contact</th>
+          <th class="bg-info">message	</th>
+          <th class="bg-info">date_created</th>
+      </tr>
+      </thead>
+      ';
+    }
+
+
+
+?>
+
+       
             <tbody>
                 <?php
-                    $select_query = "select * from `inguiry_list`";
-                    $result= mysqli_query($con, $select_query);
+                  
                     while($row_fetch=mysqli_fetch_assoc($result)){
                     $inquiry_id	= $row_fetch['inquiry_id'];
                     $tutor_id= $row_fetch['tutor_id'];
