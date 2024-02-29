@@ -65,8 +65,8 @@
                 <input type="password" name="tutor_password" placeholder="Enter password******" required>
             </label>
             
-            <button class="btn1" type="submit" name="login">Login</button>
-            <p  class="text-light">Don't have an account? <a href="registration.php">click here</a></p>
+            <button class="btn1 text-light" type="submit" name="login">Login</button>
+            <p  class="text-light">Don't have an account? <a href="registration.php"    class="text-danger  text-decoration-none">click here</a></p>
         </form>
     </fieldset>
     </div>

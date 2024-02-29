@@ -1,7 +1,14 @@
-var offcanvas = new bootstrap.Offcanvas(document.getElementById('offcanvasScrolling'));
-offcanvas.show();
+// Get the enroll link element
+const enrollLink = document.getElementById('enrollLink').querySelector('a');
 
-// Close the offcanvas when the close button is clicked
-document.getElementById('closeOffcanvas').addEventListener('click', function () {
-    offcanvas.hide();
+// Add event listener to the link
+enrollLink.addEventListener('click', function(event) {
+  // Prevent default link behavior
+  event.preventDefault();
+
+  // Disable the link text
+  enrollLink.textContent = 'Enrollment in progress...';
+
+  // Optionally, you can also disable the link itself
+  enrollLink.classList.add('disabled');
 });

@@ -66,7 +66,40 @@
    // Fetch the result for unavailable courses
    $inactiveRow = mysqli_fetch_assoc($inactiveResult);
    $inactiveCourses = $inactiveRow['inactive_courses'];
+
+// Query to count approved courses
+$approvedQuery = "SELECT COUNT(*) AS approved_courses FROM enrolled_courses WHERE enrollment_status = 'Approved'";
+$approveResult = mysqli_query($con, $approvedQuery);
+
+if (!$approveResult) {
+    // Handle query error
+    die("Query failed: " . mysqli_error($con));
+}
+
+// Fetch the result for waiting  approval courses
+$approvedRow = mysqli_fetch_assoc($approveResult);
+$approvedCourses = $approvedRow['approved_courses'];
+
+// Query to count unavailable courses
+$waitingapprovalQuery = "SELECT COUNT(*) AS waiting_approval FROM enrolled_courses WHERE enrollment_status = 'Waiting Approval'";
+$waitingResult = mysqli_query($con, $waitingapprovalQuery);
+
+if (!$waitingResult) {
+    // Handle query error
+    die("Query failed: " . mysqli_error($con));
+}
+
+// Fetch the result for unavailable courses
+$waitingRow = mysqli_fetch_assoc($waitingResult);
+$waitingCourses = $waitingRow['waiting_approval'];
+
+
+
+
 ?>
+
+
+
 
 
 
@@ -115,6 +148,7 @@
           <li class="nav-item "><a class="nav-link m-3" href="courses.php?courses"><i class="fa-solid fa-graduation-cap  p-2"></i>Courses</a></li>
           <li class="nav-item "><a class="nav-link m-3" href="viewqueries.php?viewqueries"><i class="fa-solid fa-question  p-2"></i>View Queries</a></li>
           <li class="nav-item "><a class="nav-link m-3" href="addcourses.php"><i class="fa-solid fa-graduation-cap p-2"></i>Add Course</a></li>
+          <li class="nav-item "><a class="nav-link m-3" href="viewenrolledcourses.php?viewenrolledcourse"><i class="fa-solid fa-graduation-cap p-2"></i>Enrolled Course</a></li>
           <li class="nav-item "><a class="nav-link m-3" href="profile.php?profile"><i class="fa-solid fa-user  p-2"></i>Profile</a></li>
         </ul>
       </div>
@@ -122,6 +156,7 @@
   </div>
 </nav>
 <div class="container-fluid home">
+  <h2 class="text-center text-dark  text-decoration-underline w-100">Tutor Dashbord</h2>
   <div class="main">
     <div class="dashboard bg-dark">
       <p>Active Courses</p>
@@ -134,6 +169,14 @@
     <div class="dashboard bg-dark">
       <p>Inquries</p>
       <h1><?php echo $totalinquires; ?></h1>
+    </div>
+    <div class="dashboard bg-dark">
+      <p>Approved</p>
+      <h1><?php echo $approvedCourses; ?></h1>
+    </div>
+    <div class="dashboard bg-dark">
+      <p>Waiting Approval</p>
+      <h1><?php echo  $waitingCourses; ?></h1>
     </div>
     <div class="dashboard bg-dark">
       <p>Total Courses</p>

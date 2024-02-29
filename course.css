@@ -24,6 +24,11 @@ body{
     overflow: hidden;
 
 }
+.disabled {
+    pointer-events: none; /* Disable mouse events */
+    color: gray; /* Change color to indicate disabled state */
+    text-decoration: none; /* Optionally remove underline */
+  }
 .webdesign{
     box-shadow: 10px 10px 5px 0px rgba(107,99,99,0.75);
 -webkit-box-shadow: 10px 10px 5px 0px rgba(107,99,99,0.75);
@@ -42,7 +47,7 @@ body{
 
 }
 footer{
-    margin-top: 10rem;
+    margin-top: 1rem;
     height: 20vh;
     width: 100%;
 }

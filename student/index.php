@@ -5,13 +5,13 @@
     // Check if the user is logged in if  redirects him to  login page
     if (!isset($_SESSION['tutor_fname'])) {
         // Redirect to the login page
-        header("Location: ./Auth/login.php");
+        header("Location: ../Auth/login.php");
         exit();
     }
 
 ?>
 <?php
-   $query = "SELECT COUNT(*) AS total_inquries FROM inguiry_list"; // Change 'users' to your actual table name
+   $query = "SELECT COUNT(*) AS enrolled_course FROM enrolled_courses"; // Change 'users' to your actual table name
    $result = mysqli_query($con, $query);
 
    if (!$result) {
@@ -20,9 +20,9 @@
    }
    // Step 3: Fetch the result and display it on the dashboard
    $row = mysqli_fetch_assoc($result);
-   $totalinquires = $row['total_inquries'];
+   $enrolledcourses = $row['enrolled_course'];
    // Display the total number of users on the dashboard
-   echo $totalinquires;
+   echo $enrolledcourses;
 ?>
 <?php
    $query = "SELECT COUNT(*) AS total_courses FROM course_list"; // Change 'users' to your actual table name
@@ -41,31 +41,31 @@
 
 
 
-   // Query to count available courses
-   $activeQuery = "SELECT COUNT(*) AS active_courses FROM course_list WHERE course_status = 'Active'";
-   $activeResult = mysqli_query($con, $activeQuery);
+   // Query to count approved courses
+   $approvedQuery = "SELECT COUNT(*) AS approved_courses FROM enrolled_courses WHERE enrollment_status = 'Approved'";
+   $approveResult = mysqli_query($con, $approvedQuery);
 
-   if (!$activeResult) {
+   if (!$approveResult) {
        // Handle query error
        die("Query failed: " . mysqli_error($con));
    }
 
-   // Fetch the result for available courses
-   $activeRow = mysqli_fetch_assoc($activeResult);
-   $activeCourses = $activeRow['active_courses'];
+   // Fetch the result for waiting  approval courses
+   $approvedRow = mysqli_fetch_assoc($approveResult);
+   $approvedCourses = $approvedRow['approved_courses'];
 
    // Query to count unavailable courses
-   $inactiveQuery = "SELECT COUNT(*) AS inactive_courses FROM course_list WHERE course_status = 'pending'";
-   $inactiveResult = mysqli_query($con, $inactiveQuery);
+   $waitingapprovalQuery = "SELECT COUNT(*) AS waiting_approval FROM enrolled_courses WHERE enrollment_status = 'Waiting Approval'";
+   $waitingResult = mysqli_query($con, $waitingapprovalQuery);
 
-   if (!$inactiveResult) {
+   if (!$waitingResult) {
        // Handle query error
        die("Query failed: " . mysqli_error($con));
    }
 
    // Fetch the result for unavailable courses
-   $inactiveRow = mysqli_fetch_assoc($inactiveResult);
-   $inactiveCourses = $inactiveRow['inactive_courses'];
+   $waitingRow = mysqli_fetch_assoc($waitingResult);
+   $waitingCourses = $waitingRow['waiting_approval'];
 ?>
 
 
@@ -79,7 +79,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sidebar</title>
+    <title>student Dashboard</title>
     <link rel="stylesheet" href="../home.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -114,7 +114,7 @@
           <li class="nav-item "><a class="nav-link m-3 " href="index.php?home"><i class="fa-solid fa-gauge  p-2"></i>Dashboard</a></li>
           <li class="nav-item "><a class="nav-link m-3" href="courses.php?courses"><i class="fa-solid fa-graduation-cap  p-2"></i>Courses</a></li>
           <li class="nav-item "><a class="nav-link m-3" href="inquiry.php?inquiry"><i class="fa-solid fa-question  p-2"></i>Queries</a></li>
-          <!-- <li class="nav-item "><a class="nav-link m-3" href="addcourses.php"><i class="fa-solid fa-graduation-cap p-2"></i>Add Course</a></li> -->
+          <li class="nav-item "><a class="nav-link m-3" href="viewenrolledcourses.php?viewenrolledcourse"><i class="fa-solid fa-graduation-cap p-2"></i>Enrolled Course</a></li>
           <li class="nav-item "><a class="nav-link m-3" href="profile.php?profile"><i class="fa-solid fa-user  p-2"></i>Profile</a></li>
         </ul>
       </div>
@@ -123,24 +123,25 @@
 </nav>
 <div class="container-fluid home">
   <div class="main">
+    <h2 class="text-center text-dark w-100  text-decoration-underline">Student Dashboard</h2>
     <div class="dashboard bg-dark">
-      <p>Active Courses</p>
-      <h1><?php echo $activeCourses; ?></h1>
+      <p>Approved Courses</p>
+      <h1><?php echo $approvedCourses; ?></h1>
     </div>
     <div class="dashboard bg-dark">
-      <p>Inactive courses</p>
-      <h1><?php echo $inactiveCourses; ?></h1>
+      <p>Waiting Approval</p>
+      <h1><?php echo $waitingCourses; ?></h1>
     </div>
     <div class="dashboard bg-dark">
-      <p>Inquries</p>
-      <h1><?php echo $totalinquires; ?></h1>
+      <p>Enrolled courses</p>
+      <h1><?php echo $enrolledcourses ?></h1>
     </div>
     <div class="dashboard bg-dark">
       <p>Total Courses</p>
       <h1><?php echo  $totalcourses;?></h1>
     </div>
   </div>
-  <div class="img">
+  <div class="img m-auto">
 
   </div>
    

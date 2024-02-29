@@ -1,9 +1,9 @@
 <?php
-    include("../connection.php");
+    include("./connection.php");
     session_start();
     if (!isset($_SESSION['tutor_fname'])) {
       // Redirect to the login page
-      header("Location: ../Auth/login.php");
+      header("Location: ./Auth/login.php");
       exit();
   }
 
@@ -29,7 +29,7 @@
     <!-- Move Welcome section to the right -->
     <div class="d-flex flex-row-reverse">
       <?php if(!isset($_SESSION['tutor_fname'])) : ?>
-        <a class="nav-link text-light me-3" href="./Auth/login.php"><i class="fa-solid fa-user"></i>Welcome Guest</a>
+        <a class="nav-link text-light me-3" href="/Auth/login.php"><i class="fa-solid fa-user"></i>Welcome Guest</a>
         <a class="nav-link text-light me-3" href="./Auth/login.php">Login</a>
       <?php else : ?>
         <a class="nav-link text-light me-3" href="profile.php"><i class="fa-solid fa-user"></i>Welcome <?php echo $_SESSION['tutor_fname']; ?></a>
@@ -47,8 +47,9 @@
         <ul class="navbar-nav">
           <li class="nav-item "><a class="nav-link m-3 " href="index.php?home"><i class="fa-solid fa-gauge  p-2"></i>Dashboard</a></li>
           <li class="nav-item "><a class="nav-link m-3" href="courses.php?courses"><i class="fa-solid fa-graduation-cap  p-2"></i>Courses</a></li>
-          <li class="nav-item "><a class="nav-link m-3" href="inquiry.php?inquiry"><i class="fa-solid fa-question  p-2"></i>Queries</a></li>
-          <li class="nav-item "><a class="nav-link m-3" href="viewenrolledcourses.php?viewenrolledcourse"><i class="fa-solid fa-graduation-cap p-2"></i>Enrolled Courses</a></li>
+          <li class="nav-item "><a class="nav-link m-3" href="viewqueries.php?viewqueries"><i class="fa-solid fa-question  p-2"></i>View Queries</a></li>
+          <li class="nav-item "><a class="nav-link m-3" href="viewenrolledcourses.php?viewenrolledcourse"><i class="fa-solid fa-graduation-cap p-2"></i>Enrolled Course</a></li>
+          <li class="nav-item "><a class="nav-link m-3" href="addcourses.php"><i class="fa-solid fa-graduation-cap p-2"></i>Add Course</a></li>
           <li class="nav-item "><a class="nav-link m-3" href="profile.php?profile"><i class="fa-solid fa-user  p-2"></i>Profile</a></li>
         </ul>
       </div>
@@ -56,67 +57,56 @@
   </div>
 </nav>
 <div class="container-fluid d-flex content">
-    <h2 class=" text-success w-100 text-center col-12">Availabel Courses</h2>
+    <h2 class=" text-success w-100 text-center col-12">Enrolled Courses</h2>
         <div class="row courses">
         <?php
-    $select_course= "select * from `course_list`";
-    $course_result = mysqli_query($con, $select_course);
-    while($fetch_course = mysqli_fetch_assoc($course_result)){
-    $course_id=$fetch_course['course_id'];
-    $course_name = $fetch_course['course_name'];
-    $course_description = $fetch_course['course_description'];
-    $tutor_id = $fetch_course['tutor_id'];
-    $course_status =$fetch_course['course_status'];
-    $date_created= $fetch_course['date_created'];
-    $date_updated=$fetch_course['date_updated'];
-    $enrollment_status = isset($_GET['enrollment_status']) ? $_GET['enrollment_status'] : '';
-
-
-    if($course_status==='pending'){
-      $course_status='Inactive';
+    $select_enrolled= "select * from `enrolled_courses`";
+    $enroll_result = mysqli_query($con, $select_enrolled);
+    while($fetch_enrollment = mysqli_fetch_assoc($enroll_result)){
+    $course_id=$fetch_enrollment['course_id'];
+    $course_name = $fetch_enrollment['course_name'];
+    $course_description = $fetch_enrollment['course_description'];
+    $tutor_id = $fetch_enrollment['tutor_id'];
+    $enrollment_status =$fetch_enrollment['enrollment_status'];
+    $date_enrolled= $fetch_enrollment['enrollment_date'];
+    
+    if($enrollment_status=="Waiting Approval"){
+      $enrollment_status="Waiting Approval";
     }else{
-      $course_status='Active';
-    }
-   
-      if($enrollment_status=="Waiting Approval"){
-        $enrollment_status="Waiting Approval";
-      }else{
-        $enrollment_status="Approved";
+      $enrollment_status="Approved";
 
-      }
+    }
 ?>
 <div class=" webdesign">
     <h4><?php echo $course_name; ?></h4>
       <p><?php echo $course_description; ?></p>
     <P class="d-flex  gap-2">
       <?php
-      if($course_status=='Active'){
-        echo "<td class='text-success'><h4  class='text-success'>Active</h4></td>";
-        }else{
-            echo "<td class='bg-secondary text-light'><a  class='text-danger  text-decoration-none'><h4  class='text-danger'>Inctive</h4></a></td>
-            </tr>";
+      if($enrollment_status=='Waiting Approval'){
+        echo "<td class='bg-secondary text-light'><a href='approve.php?course_id=$course_id' class='text-danger'><h4  class='text-danger'>Status:Waiting Approval</h4></a></td>
+        </tr>";
+      }else{
+          echo "<td class='text-success'><h4  class='text-success'>status:Approved</h4></td>";
         }
       
     ?>
-      
-  
-  <span id="enrollLink"><a href="enrollment.php?enrollcourse&course_id=<?php echo $course_id; ?>&course_name=<?php echo urlencode($course_name); ?>&course_description=<?php echo urlencode($course_description);?>">Enroll</a></span>
+  <span><a href="enrollment.php?enrollcourse&course_id=<?php echo $course_id; ?>&course_name=<?php echo urlencode($course_name); ?>&course_description=<?php echo urlencode($course_description);?>">Enroll</a></span>
 
   
   </P>
-    <P><b>Date Created:</b>    <?php echo $date_created; ?></P>
-    <P><b>Date Updated: </b>   <?php echo $date_updated; ?></P>
+    <P><b>Date Created:</b>    <?php echo $date_enrolled; ?></P>
+    <!-- <P><b>Date Updated: </b>   <?///php echo $date_updated; ?></P> -->
 </div>
 <?php
 }
 ?>
         </div>
-        <footer class=" bg-dark">
+        <footer class=" bg-dark ">
                <p class="text-light text-center">All rights Reserved &copy; 2024</p>
        </footer>
         
 
-<script src="../main.js"></script>
+<script src="./main.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

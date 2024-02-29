@@ -15,7 +15,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sidebar</title>
+    <title>Student Sidebar</title>
     <link rel="stylesheet" href="sidebar.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -57,7 +57,7 @@
           <li class="nav-item "><a class="nav-link m-3 " href="index.php?home"><i class="fa-solid fa-gauge  p-2"></i>Dashboard</a></li>
           <li class="nav-item "><a class="nav-link m-3" href="courses.php?courses"><i class="fa-solid fa-graduation-cap  p-2"></i>Courses</a></li>
           <li class="nav-item "><a class="nav-link m-3" href="inquiry.php?inquiry"><i class="fa-solid fa-question  p-2"></i>Queries</a></li>
-          <!-- <li class="nav-item "><a class="nav-link m-3" href="addcourses.php"><i class="fa-solid fa-graduation-cap p-2"></i>Add Course</a></li> -->
+          <li class="nav-item "><a class="nav-link m-3" href="viewenrolledcourses.php?viewenrolledcourse"><i class="fa-solid fa-graduation-cap p-2"></i>Enrolled Course</a></li>
           <li class="nav-item "><a class="nav-link m-3" href="profile.php?profile"><i class="fa-solid fa-user  p-2"></i>Profile</a></li>
         </ul>
       </div>
@@ -65,6 +65,9 @@
   </div>
 </nav>
     <?php
+     if(isset($_POST['viewenrolledcourse'])){
+      include('viewenrolledcourses.php');
+  }
       
       if(isset($_POST['home'])){
         include('index.php');
@@ -81,6 +84,16 @@
     }
     if(isset($_POST['register'])){
         include('register.php');
+    }
+    if(isset($_POST['enrollcourse'])){
+      include('enrollment.php');
+    }
+    if(isset($_GET['edit'])){
+      
+      include('editaccount.php');
+    }
+    if(isset($_GET['deleteaccount'])){
+      include('deleteaccount.php');
     }
 
 
