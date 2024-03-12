@@ -33,7 +33,7 @@
         <a class="nav-link text-light me-3" href="/Auth/login.php"><i class="fa-solid fa-user"></i>Admin  </a>
         <a class="nav-link text-light me-3" href="./Auth/login.php">Login</a>
       <?php else : ?>
-        <a class="nav-link text-light me-3" href="profile.php"><i class="fa-solid fa-user"></i>Admin <?php echo $_SESSION['tutor_fname']; ?></a>
+        <a class="nav-link text-light me-3" href="#"><i class="fa-solid fa-user"></i>Admin <?php echo $_SESSION['tutor_fname']; ?></a>
         <a class="nav-link text-light me-3" href="logout.php">Logout</a>
       <?php endif; ?>
     </div>
@@ -53,7 +53,7 @@
           <li class="nav-item "><a class="nav-link m-2" href="adduser.php?adduser"><i class="fa-solid fa-user  p-1"></i>Add Users</a></li>
           <!-- <li class="nav-item "><a class="nav-link m-2" href="e.php?profile"><i class="fa-solid fa-user  p-1"></i>Edit  course</a></li> -->
           <li class="nav-item "><a class="nav-link m-2" href="viewusers.php?viewUsers"><i class="fa-solid fa-question  p-1"></i>View users</a></li>
-          <!-- <li class="nav-item "><a class="nav-link m-2" href="viewcourse.php?viewcourse"><i class="fa-solid fa-question  p-1"></i>View course</a></li> -->
+          <li class="nav-item "><a class="nav-link m-2" href="report.php?report"><i class="fa-regular fa-file-pdf p-1"></i>Generate Report</a></li>
         </ul>
       </div>
     </div>
@@ -63,16 +63,21 @@
     <h2 class=" text-success w-100 text-center col-12">Availabel Courses</h2>
         <div class="row courses">
         <?php
-    $select_course= "select * from `course_list`";
+    $select_course= "select * from `course`";
     $course_result = mysqli_query($con, $select_course);
+    $count=mysqli_num_rows($course_result);
+    if($count==0){
+      echo  "<h3 class='text-center text-danger mt-5'>No courses yet</h3>";
+
+    }else{
     while($fetch_course = mysqli_fetch_assoc($course_result)){
     $course_id=$fetch_course['course_id'];
     $course_name = $fetch_course['course_name'];
     $course_description = $fetch_course['course_description'];
-    $tutor_id = $fetch_course['tutor_id'];
+    $tutor_id = $fetch_course['registration_id'];
     $course_status =$fetch_course['course_status'];
-    $date_created= $fetch_course['date_created'];
-    $date_updated=$fetch_course['date_updated'];
+    $date_created= $fetch_course['course_date_created'];
+    $date_updated=$fetch_course['course_date_updated'];
       if($course_status==='pending'){
           $course_status='Inactive';
       }else{
@@ -100,7 +105,7 @@
     <a href='Sidebar.php?deletecourse=<?php echo $course_id; ?>' class='text-dark'><i class='fa-solid fa-trash'>Delete</i></a>
 </div>
 <?php
-}
+}}
 ?>
         </div>
         <footer class=" bg-dark">

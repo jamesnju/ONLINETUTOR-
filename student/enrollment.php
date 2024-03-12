@@ -10,18 +10,16 @@
     // Check if the enroll button is clicked
     if(isset($_GET['enrollcourse'])) {
         // Assuming you have session data for the tutor ID
-        $tutor_id = $_SESSION['tutor_id'];
+        $tutor_id = $_SESSION['registration_id'];
         
         // Assuming you can retrieve the course ID from the URL parameter
         $course_id = $_GET['course_id'];
         $course_name = $_GET['course_name'];
         $course_description = $_GET['course_description'];
-
         $enrollment_status=$_GET['Waiting Approval'];
-
         
         // Check if the tutor is already enrolled in the course
-        $check_query = "SELECT * FROM enrolled_courses WHERE tutor_id = '$tutor_id' AND course_id = '$course_id'";
+        $check_query = "SELECT * FROM enrolled_course WHERE registration_id = '$tutor_id' AND course_id = '$course_id'";
         $check_result = mysqli_query($con, $check_query);
         if(mysqli_num_rows($check_result) > 0) {
             // Tutor is already enrolled in the course
@@ -31,8 +29,8 @@
         } else {
             // Insert enrollment record into the database
             $enrollment_status='Waiting Approval';
-            $insert_query = "INSERT INTO enrolled_courses (tutor_id, course_id, course_name,course_description,enrollment_date, enrollment_status) 
-            VALUES ('$tutor_id', '$course_id','$course_name','$course_description', NOW(), '$enrollment_status')";
+            $insert_query = "INSERT INTO enrolled_course (course_id,registration_id, enrolled_course_name,enrolled_course_description,enrolled_course_date, enrolled_course_status) 
+            VALUES ('$course_id','$tutor_id', '$course_name','$course_description', NOW(), '$enrollment_status')";
             $insert_result = mysqli_query($con, $insert_query);
             
         
@@ -50,5 +48,3 @@
         }
     }
 ?>
-
-

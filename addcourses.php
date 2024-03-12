@@ -58,6 +58,7 @@
     </div>
   </div>
 </nav>
+
 <div class="container-fluid">
     <div class="inquire d-flex">
 
@@ -80,11 +81,12 @@
                 <select name="tutor_name" id="">
                     <option value="select">select tutor</option>
                     <?php
-                    $select_tutor = "select * from `registration` WHERE role = 'tutor'";
+                    $select_tutor = "select * from `registration` WHERE registration_role = 'tutor'";
+
                     $result_tutor=mysqli_query($con, $select_tutor);
                 while($fetch_data=mysqli_fetch_assoc($result_tutor)){
-                    $tutor_id=$fetch_data['tutor_id'];
-                    $tutor_fname = $fetch_data['tutor_fname'];
+                    $tutor_id=$fetch_data['registration_id'];
+                    $tutor_fname = $fetch_data['registration_fname'];
                     echo "<option value='$tutor_id'>$tutor_fname</option>";
                 }
                 ?>
@@ -96,7 +98,7 @@
             </label> -->
         
 
-            <button class="btn1" type="submit" name="addcourse">Submit</button>
+            <button class="btn1" type="submit" name="addcourse">Add Course</button>
             <!-- <p>Have an account? <a href="login.php">click here</a></p> -->
         </form>
     </fieldset>
@@ -118,17 +120,19 @@
                 $tutor_id = $_POST['tutor_name'];
                 $course_status ='pending';
                
-                $select_query = "select * from `course_list` where course_name = '$course_name'";
+                $select_query = "select * from `course` where course_name = '$course_name'";
                 $result_select = mysqli_query($con,$select_query);
                 $row= mysqli_num_rows($result_select);
                 if($row>0){
                     echo "<script>alert('course Already Exists')</script>";
                 }else{
 
-                    $insert_query ="insert into `course_list` (tutor_id,course_name,course_description,course_status,date_created,date_updated)
+                    $insert_query ="insert into `course` (registration_id,course_name,course_description,course_status,course_date_created,course_date_updated)
                     VALUES ('$tutor_id','$course_name','$course_description','$course_status',Now(),Now())";
                     $result_insert = mysqli_query($con,$insert_query);
                     echo "<script>alert('course added successfully')</script>";
+                    echo "<script>window.open('courses.php','_self')</script>";
+
                 }
 
                 

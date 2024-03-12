@@ -62,13 +62,16 @@
           <li class="nav-item "><a class="nav-link m-2" href="adduser.php?adduser"><i class="fa-solid fa-user  p-1"></i>Add Users</a></li>
           <!-- <li class="nav-item "><a class="nav-link m-2" href="e.php?profile"><i class="fa-solid fa-user  p-1"></i>Edit  course</a></li> -->
           <li class="nav-item "><a class="nav-link m-2" href="viewusers.php?viewUsers"><i class="fa-solid fa-question  p-1"></i>View users</a></li>
-          <!-- <li class="nav-item "><a class="nav-link m-2" href="viewcourse.php?viewcourse"><i class="fa-solid fa-question  p-1"></i>View course</a></li> -->
+          <li class="nav-item "><a class="nav-link m-2" href="report.php?report"><i class="fa-regular fa-file-pdf p-1"></i>Generate Report</a></li>
         </ul>
       </div>
     </div>
   </div>
 </nav>
     <?php
+      if(isset($_POST['report'])){
+        include('report.php');
+    }
       
       if(isset($_POST['home'])){
         include('index.php');

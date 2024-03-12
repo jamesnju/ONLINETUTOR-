@@ -14,14 +14,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>coures</title>
+    <title>Admin coures</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="course.css"/> -->
     <link rel="stylesheet" href="../inqury.css">
-
-
 </head>
 <body>
 <nav class="navbar navbar-dark bg-dark fixed-top">
@@ -35,7 +33,7 @@
         <a class="nav-link text-light me-3" href="/Auth/login.php"><i class="fa-solid fa-user"></i>Admin  </a>
         <a class="nav-link text-light me-3" href="./Auth/login.php">Login</a>
       <?php else : ?>
-        <a class="nav-link text-light me-3" href="profile.php"><i class="fa-solid fa-user"></i>Admin <?php echo $_SESSION['tutor_fname']; ?></a>
+        <a class="nav-link text-light me-3" href="#"><i class="fa-solid fa-user"></i>Admin <?php echo $_SESSION['tutor_fname']; ?></a>
         <a class="nav-link text-light me-3" href="logout.php">Logout</a>
       <?php endif; ?>
     </div>
@@ -55,7 +53,7 @@
           <li class="nav-item "><a class="nav-link m-2" href="adduser.php?adduser"><i class="fa-solid fa-user  p-1"></i>Add Users</a></li>
           <!-- <li class="nav-item "><a class="nav-link m-2" href="e.php?profile"><i class="fa-solid fa-user  p-1"></i>Edit  course</a></li> -->
           <li class="nav-item "><a class="nav-link m-2" href="viewusers.php?viewUsers"><i class="fa-solid fa-question  p-1"></i>View users</a></li>
-          <!-- <li class="nav-item "><a class="nav-link m-2" href="viewcourse.php?viewcourse"><i class="fa-solid fa-question  p-1"></i>View course</a></li> -->
+          <li class="nav-item "><a class="nav-link m-2" href="report.php?report"><i class="fa-regular fa-file-pdf p-1"></i>Generate Report</a></li>
         </ul>
       </div>
     </div>
@@ -83,11 +81,12 @@
                 <select name="tutor_name" id="">
                     <option value="select">select tutor</option>
                     <?php
-                    $select_tutor = "select * from `registration` WHERE role = 'tutor'";
+                    $select_tutor = "select * from `registration` WHERE registration_role = 'tutor'";
+
                     $result_tutor=mysqli_query($con, $select_tutor);
                 while($fetch_data=mysqli_fetch_assoc($result_tutor)){
-                    $tutor_id=$fetch_data['tutor_id'];
-                    $tutor_fname = $fetch_data['tutor_fname'];
+                    $tutor_id=$fetch_data['registration_id'];
+                    $tutor_fname = $fetch_data['registration_fname'];
                     echo "<option value='$tutor_id'>$tutor_fname</option>";
                 }
                 ?>
@@ -121,14 +120,14 @@
                 $tutor_id = $_POST['tutor_name'];
                 $course_status ='pending';
                
-                $select_query = "select * from `course_list` where course_name = '$course_name'";
+                $select_query = "select * from `course` where course_name = '$course_name'";
                 $result_select = mysqli_query($con,$select_query);
                 $row= mysqli_num_rows($result_select);
                 if($row>0){
                     echo "<script>alert('course Already Exists')</script>";
                 }else{
 
-                    $insert_query ="insert into `course_list` (tutor_id,course_name,course_description,course_status,date_created,date_updated)
+                    $insert_query ="insert into `course` (registration_id,course_name,course_description,course_status,course_date_created,course_date_updated)
                     VALUES ('$tutor_id','$course_name','$course_description','$course_status',Now(),Now())";
                     $result_insert = mysqli_query($con,$insert_query);
                     echo "<script>alert('course added successfully')</script>";

@@ -14,7 +14,7 @@ if(isset($_POST['register'])){
     $pic = $_FILES['tutor_pic']['name'];
     $pic_tmp = $_FILES['tutor_pic']['tmp_name'];
 
-    $select_query = "select * from `registration` where tutor_fname='$fname' or tutor_email='$email'";
+    $select_query = "select * from `registration` where registration_fname='$fname' or registration_email='$email'";
     $query= mysqli_query($con, $select_query);
     $row=mysqli_num_rows($query);
 
@@ -25,7 +25,7 @@ if(isset($_POST['register'])){
         echo  "<script>alert('password do not match')</script>";
         echo "<script>window.open('registration.php','_self')</script>";
     }else {
-        $insert_query = "INSERT INTO `registration` (tutor_fname, tutor_lname, tutor_email, tutor_pic, role, tutor_password, confirm_password) VALUES 
+        $insert_query = "INSERT INTO `registration` (registration_fname, registration_lname, registration_email, registration_pic, registration_role, registration_password, registration_confirm_password) VALUES 
         ('$fname','$lname','$email','$pic','$role', '$hash_password', '$hash_password')"; // Added closing parenthesis
         $result = mysqli_query($con, $insert_query);
         /* store the image */

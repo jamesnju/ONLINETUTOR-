@@ -63,7 +63,7 @@
 
 <table class="table table-bordered mt-5 h-100vh  pt-100px">
   <?php
-    $select_query = "select * from `inguiry_list`";
+    $select_query = "select * from `inquirer`";
     $result= mysqli_query($con, $select_query);
     $row_count=mysqli_num_rows($result);
     if($row_count==0){
@@ -74,7 +74,6 @@
       <thead >
       <tr>
           <th class="bg-info">inquiry_id</th>
-          <th class="bg-info">tutor_id</th>
           <th class="bg-info">full_name</th>
           <th class="bg-info">inqurer_email</th>
           <th class="bg-info">inquirer_contact</th>
@@ -88,35 +87,30 @@
 
 
 ?>
-
-       
             <tbody>
                 <?php
                   
                     while($row_fetch=mysqli_fetch_assoc($result)){
-                    $inquiry_id	= $row_fetch['inquiry_id'];
-                    $tutor_id= $row_fetch['tutor_id'];
-                    $full_name= $row_fetch['full_name'];
-                    $inqurer_email	= $row_fetch['inqurer_email'];
+                    $inquiry_id	= $row_fetch['inquirer_id'];
+                    // $tutor_id= $row_fetch['registration_id'];
+                    $full_name= $row_fetch['inquirer_full_name'];
+                    $inqurer_email	= $row_fetch['inquirer_email'];
                     $inquirer_contact	= $row_fetch['inquirer_contact'];
-                    $message= $row_fetch['message'];
-                    $date_created= $row_fetch['date_created'];
+                    $message= $row_fetch['inquirer_message'];
+                    $date_created= $row_fetch['inquirer_date_created'];
                     ?>
             <tr class="text-center">
                 <td class="bg-secondary text-light"><?php echo $inquiry_id ?></td>
-                <td class="bg-secondary text-light"><?php echo $tutor_id?></td>
                 <td class="bg-secondary text-light"><?php echo $full_name?></td>
                 <td class="bg-secondary text-light"><?php echo $inqurer_email?></td>
                 <td class="bg-secondary text-light"><?php echo $inquirer_contact?></td>
                 <td class="bg-secondary text-light"><?php echo $message?></td>
                 <td class="bg-secondary text-light"><?php echo $date_created?></td>
                 </tr>
-                        <?php
+                    <?php
                     }
-                        ?>
-
-            </tbody>
-                    
+                    ?>
+            </tbody>                    
 </table> 
 </div>    
    

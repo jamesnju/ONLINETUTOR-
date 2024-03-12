@@ -41,12 +41,12 @@ if (!isset($_SESSION['tutor_fname'])) {
 <?php 
     if(isset($_POST['delete'])){
         $tutor_fname=$_SESSION['tutor_fname'];
-        $delete_query="Delete from `registration` where tutor_fname='$tutor_fname'";
+        $delete_query="Delete from `registration` where registration_fname='$tutor_fname'";
         $result=mysqli_query($con,$delete_query);
         if($result){
             session_destroy();
             echo "<script>alert('deleted account')</script>";
-            echo "<script>window.open('./login.php','_self')</script>";
+            echo "<script>window.open('./Auth/login.php','_self')</script>";
         }
     }
     if(isset($_POST['dont_delete'])){

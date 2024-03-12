@@ -35,7 +35,7 @@
         <a class="nav-link text-light me-3" href="/Auth/login.php"><i class="fa-solid fa-user"></i>Admin  </a>
         <a class="nav-link text-light me-3" href="./Auth/login.php">Login</a>
       <?php else : ?>
-        <a class="nav-link text-light me-3" href="profile.php"><i class="fa-solid fa-user"></i>Admin <?php echo $_SESSION['tutor_fname']; ?></a>
+        <a class="nav-link text-light me-3" href="#"><i class="fa-solid fa-user"></i>Admin <?php echo $_SESSION['tutor_fname']; ?></a>
         <a class="nav-link text-light me-3" href="logout.php">Logout</a>
       <?php endif; ?>
     </div>
@@ -55,7 +55,7 @@
           <li class="nav-item "><a class="nav-link m-2" href="adduser.php?adduser"><i class="fa-solid fa-user  p-1"></i>Add Users</a></li>
           <!-- <li class="nav-item "><a class="nav-link m-2" href="e.php?profile"><i class="fa-solid fa-user  p-1"></i>Edit  course</a></li> -->
           <li class="nav-item "><a class="nav-link m-2" href="viewusers.php?viewUsers"><i class="fa-solid fa-question  p-1"></i>View users</a></li>
-          <!-- <li class="nav-item "><a class="nav-link m-2" href="viewcourse.php?viewcourse"><i class="fa-solid fa-question  p-1"></i>View course</a></li> -->
+          <li class="nav-item "><a class="nav-link m-2" href="report.php?report"><i class="fa-regular fa-file-pdf p-1"></i>Generate Report</a></li>
         </ul>
       </div>
     </div>
@@ -68,7 +68,7 @@
   
         <thead >
           <?php  
-          $select_query = "select * from `inguiry_list`";
+          $select_query = "select * from `inquirer`";
           $result= mysqli_query($con, $select_query);
           $count=mysqli_num_rows($result);
           if($count==0){
@@ -78,14 +78,13 @@
             echo  '
 
             <tr>
-                <th class="bg-info">inquiry_id</th>
-                <th class="bg-info">tutor_id</th>
-                <th class="bg-info">full_name</th>
-                <th class="bg-info">inqurer_email</th>
-                <th class="bg-info">inquirer_contact</th>
-                <th class="bg-info">message	</th>
-                <th class="bg-info">date_created</th>
-                <th class="bg-info">detele</th>
+                <th class="bg-info">id</th>
+                <th class="bg-info">Full Name</th>
+                <th class="bg-info">Inqurer Email</th>
+                <th class="bg-info">Inquirer Contact</th>
+                <th class="bg-info">Message	</th>
+                <th class="bg-info">Date Created</th>
+                <th class="bg-info">Detele</th>
             </tr>
             </thead>
             
@@ -100,17 +99,17 @@
                 <?php
                     
                     while($row_fetch=mysqli_fetch_assoc($result)){
-                    $inquiry_id	= $row_fetch['inquiry_id'];
-                    $tutor_id= $row_fetch['tutor_id'];
-                    $full_name= $row_fetch['full_name'];
-                    $inqurer_email	= $row_fetch['inqurer_email'];
+                    $inquiry_id	= $row_fetch['inquirer_id'];
+                    $tutor_id= $row_fetch['registration_id'];
+                    $full_name= $row_fetch['inquirer_full_name'];
+                    $inqurer_email	= $row_fetch['inquirer_email'];
                     $inquirer_contact	= $row_fetch['inquirer_contact'];
-                    $message= $row_fetch['message'];
-                    $date_created= $row_fetch['date_created'];
+                    $message= $row_fetch['inquirer_message'];
+                    $date_created= $row_fetch['inquirer_date_created'];
                     ?>
             <tr class="text-center">
                 <td class="bg-secondary text-light"><?php echo $inquiry_id ?></td>
-                <td class="bg-secondary text-light"><?php echo $tutor_id?></td>
+                <!-- <td class="bg-secondary text-light"><?php echo $tutor_id?></td> -->
                 <td class="bg-secondary text-light"><?php echo $full_name?></td>
                 <td class="bg-secondary text-light"><?php echo $inqurer_email?></td>
                 <td class="bg-secondary text-light"><?php echo $inquirer_contact?></td>

@@ -60,16 +60,16 @@
     <h2 class=" text-success w-100 text-center col-12">Availabel Courses</h2>
         <div class="row courses">
         <?php
-    $select_course= "select * from `course_list`";
+    $select_course= "select * from `course`";
     $course_result = mysqli_query($con, $select_course);
     while($fetch_course = mysqli_fetch_assoc($course_result)){
     $course_id=$fetch_course['course_id'];
     $course_name = $fetch_course['course_name'];
     $course_description = $fetch_course['course_description'];
-    $tutor_id = $fetch_course['tutor_id'];
+    $tutor_id = $fetch_course['registration_id'];
     $course_status =$fetch_course['course_status'];
-    $date_created= $fetch_course['date_created'];
-    $date_updated=$fetch_course['date_updated'];
+    $date_created= $fetch_course['course_date_created'];
+    $date_updated=$fetch_course['course_date_updated'];
       if($course_status==='pending'){
           $course_status='Inactive';
       }else{

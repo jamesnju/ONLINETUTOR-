@@ -21,7 +21,7 @@ if(isset($_POST['adduser'])){
   $pic = $_FILES['tutor_pic']['name'];
   $pic_tmp = $_FILES['tutor_pic']['tmp_name'];
 
-  $select_query = "select * from `registration` where tutor_fname='$fname' or tutor_email='$email'";
+  $select_query = "select * from `registration` where registration_fname='$fname' or registration_email='$email'";
   $query= mysqli_query($con, $select_query);
   $row=mysqli_num_rows($query);
 
@@ -32,7 +32,7 @@ if(isset($_POST['adduser'])){
       echo  "<script>alert('password do not match')</script>";
       // echo "<script>window.open('registration.php','_self')</script>";
   }else {
-      $insert_query = "INSERT INTO `registration` (tutor_fname, tutor_lname, tutor_email, tutor_pic,role, tutor_password, confirm_password) VALUES 
+      $insert_query = "INSERT INTO `registration` (registration_fname, registration_lname, registration_email, registration_pic,registration_role, registration_password, registration_confirm_password) VALUES 
       ('$fname','$lname','$email','$pic','$role', '$hash_password', '$hash_password')"; // Added closing parenthesis
       $result = mysqli_query($con, $insert_query);
 
@@ -79,7 +79,7 @@ if(isset($_POST['adduser'])){
         <a class="nav-link text-light me-3" href="/Auth/login.php"><i class="fa-solid fa-user"></i>Admin  </a>
         <a class="nav-link text-light me-3" href="./Auth/login.php">Login</a>
       <?php else : ?>
-        <a class="nav-link text-light me-3" href="profile.php"><i class="fa-solid fa-user"></i>Admin <?php echo $_SESSION['tutor_fname']; ?></a>
+        <a class="nav-link text-light me-3" href="#"><i class="fa-solid fa-user"></i>Admin <?php echo $_SESSION['tutor_fname']; ?></a>
         <a class="nav-link text-light me-3" href="logout.php">Logout</a>
       <?php endif; ?>
     </div>
@@ -99,7 +99,7 @@ if(isset($_POST['adduser'])){
           <li class="nav-item "><a class="nav-link m-2" href="adduser.php?adduser"><i class="fa-solid fa-user  p-1"></i>Add Users</a></li>
           <!-- <li class="nav-item "><a class="nav-link m-2" href="e.php?profile"><i class="fa-solid fa-user  p-1"></i>Edit  course</a></li> -->
           <li class="nav-item "><a class="nav-link m-2" href="viewusers.php?viewUsers"><i class="fa-solid fa-question  p-1"></i>View users</a></li>
-          <!-- <li class="nav-item "><a class="nav-link m-2" href="viewcourse.php?viewcourse"><i class="fa-solid fa-question  p-1"></i>View course</a></li> -->
+          <li class="nav-item "><a class="nav-link m-2" href="report.php?report"><i class="fa-regular fa-file-pdf p-1"></i>Generate Report</a></li>
         </ul>
       </div>
     </div>

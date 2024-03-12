@@ -12,13 +12,13 @@
     if(isset($_GET['editcourse'])){
         $edit_id=$_GET['editcourse'];
 
-        $select_course= "select *  from `course_list`";
+        $select_course= "select *  from `course`";
         $course_result=mysqli_query($con,$select_course);
         while($course_data=mysqli_fetch_assoc($course_result)){
 
             $course_name = $course_data['course_name'];
             $course_description = $course_data['course_description'];
-            $tutor_id = $course_data['tutor_id'];
+            $tutor_id = $course_data['registration_id'];
             $course_status ='pending';
         }
 }
@@ -50,7 +50,7 @@
         <a class="nav-link text-light me-3" href="/Auth/login.php"><i class="fa-solid fa-user"></i>Admin  </a>
         <a class="nav-link text-light me-3" href="./Auth/login.php">Login</a>
       <?php else : ?>
-        <a class="nav-link text-light me-3" href="profile.php"><i class="fa-solid fa-user"></i>Admin <?php echo $_SESSION['tutor_fname']; ?></a>
+        <a class="nav-link text-light me-3" href="#"><i class="fa-solid fa-user"></i>Admin <?php echo $_SESSION['tutor_fname']; ?></a>
         <a class="nav-link text-light me-3" href="logout.php">Logout</a>
       <?php endif; ?>
     </div>
@@ -70,7 +70,7 @@
           <li class="nav-item "><a class="nav-link m-2" href="adduser.php?adduser"><i class="fa-solid fa-user  p-1"></i>Add Users</a></li>
           <!-- <li class="nav-item "><a class="nav-link m-2" href="e.php?profile"><i class="fa-solid fa-user  p-1"></i>Edit  course</a></li> -->
           <li class="nav-item "><a class="nav-link m-2" href="viewusers.php?viewUsers"><i class="fa-solid fa-question  p-1"></i>View users</a></li>
-          <!-- <li class="nav-item "><a class="nav-link m-2" href="viewcourse.php?viewcourse"><i class="fa-solid fa-question  p-1"></i>View course</a></li> -->
+          <li class="nav-item "><a class="nav-link m-2" href="report.php?report"><i class="fa-regular fa-file-pdf p-1"></i>Generate Report</a></li>
         </ul>
       </div>
     </div>
@@ -126,8 +126,8 @@
                 $tutor_id = $_POST['tutor_name'];
                 $course_status ='pending';
                
-                $update_sql = "UPDATE `course_list` SET course_name='$course_name', course_description='$course_description',
-            tutor_id='$tutor_id'  WHERE course_id=$edit_id";
+                $update_sql = "UPDATE `course` SET course_name='$course_name', course_description='$course_description',
+            registration_id='$tutor_id'  WHERE course_id=$edit_id";
                 $result_update = mysqli_query($con,$update_sql);
                 if($result_update){
                     echo  "<script>alert('course updated')</script>";

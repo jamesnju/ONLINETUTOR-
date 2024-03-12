@@ -11,7 +11,7 @@
 
 ?>
 <?php
-   $query = "SELECT COUNT(*) AS enrolled_course FROM enrolled_courses"; // Change 'users' to your actual table name
+   $query = "SELECT COUNT(*) AS enrolled_course FROM enrolled_course"; 
    $result = mysqli_query($con, $query);
 
    if (!$result) {
@@ -25,7 +25,7 @@
    echo $enrolledcourses;
 ?>
 <?php
-   $query = "SELECT COUNT(*) AS total_courses FROM course_list"; // Change 'users' to your actual table name
+   $query = "SELECT COUNT(*) AS total_courses FROM course"; 
    $result = mysqli_query($con, $query);
 
    if (!$result) {
@@ -42,7 +42,7 @@
 
 
    // Query to count approved courses
-   $approvedQuery = "SELECT COUNT(*) AS approved_courses FROM enrolled_courses WHERE enrollment_status = 'Approved'";
+   $approvedQuery = "SELECT COUNT(*) AS approved_courses FROM enrolled_course WHERE enrolled_course_status = 'Approved'";
    $approveResult = mysqli_query($con, $approvedQuery);
 
    if (!$approveResult) {
@@ -55,7 +55,7 @@
    $approvedCourses = $approvedRow['approved_courses'];
 
    // Query to count unavailable courses
-   $waitingapprovalQuery = "SELECT COUNT(*) AS waiting_approval FROM enrolled_courses WHERE enrollment_status = 'Waiting Approval'";
+   $waitingapprovalQuery = "SELECT COUNT(*) AS waiting_approval FROM enrolled_course WHERE enrolled_course_status = 'Waiting Approval'";
    $waitingResult = mysqli_query($con, $waitingapprovalQuery);
 
    if (!$waitingResult) {

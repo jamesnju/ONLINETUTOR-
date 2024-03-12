@@ -60,15 +60,15 @@
     <h2 class=" text-success w-100 text-center col-12">Enrolled Courses</h2>
         <div class="row courses">
         <?php
-    $select_enrolled= "select * from `enrolled_courses`";
+    $select_enrolled= "select * from `enrolled_course`";
     $enroll_result = mysqli_query($con, $select_enrolled);
     while($fetch_enrollment = mysqli_fetch_assoc($enroll_result)){
     $course_id=$fetch_enrollment['course_id'];
-    $course_name = $fetch_enrollment['course_name'];
-    $course_description = $fetch_enrollment['course_description'];
-    $tutor_id = $fetch_enrollment['tutor_id'];
-    $enrollment_status =$fetch_enrollment['enrollment_status'];
-    $date_enrolled= $fetch_enrollment['enrollment_date'];
+    $course_name = $fetch_enrollment['enrolled_course_name'];
+    $course_description = $fetch_enrollment['enrolled_course_description'];
+    $tutor_id = $fetch_enrollment['registration_id'];
+    $enrollment_status =$fetch_enrollment['enrolled_course_status'];
+    $date_enrolled= $fetch_enrollment['enrolled_course_date'];
     
     if($enrollment_status=="Waiting Approval"){
       $enrollment_status="Waiting Approval";

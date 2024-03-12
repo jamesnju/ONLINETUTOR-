@@ -7,7 +7,7 @@ if(isset($_GET['course_id'])) {
     $course_id = $_GET['course_id'];
 
     // Update the course status to 'Active'
-    $update_query = "UPDATE `enrolled_courses` SET enrollment_status='Approved' WHERE course_id=$course_id";
+    $update_query = "UPDATE `enrolled_course` SET enrolled_course_status='Approved' WHERE course_id=$course_id";
     $result = mysqli_query($con, $update_query);
 
     if($result) {

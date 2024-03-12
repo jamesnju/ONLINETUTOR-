@@ -10,7 +10,7 @@
 
 ?>
 <?php
-   $query = "SELECT COUNT(*) AS total_inquries FROM inguiry_list"; // Change 'users' to your actual table name
+   $query = "SELECT COUNT(*) AS total_inquries FROM inquirer"; // Change 'users' to your actual table name
    $result = mysqli_query($con, $query);
 
    if (!$result) {
@@ -24,7 +24,7 @@
    echo $totalinquires;
 ?>
 <?php
-   $query = "SELECT COUNT(*) AS total_courses FROM course_list"; // Change 'users' to your actual table name
+   $query = "SELECT COUNT(*) AS total_courses FROM course"; // Change 'users' to your actual table name
    $result = mysqli_query($con, $query);
 
    if (!$result) {
@@ -41,7 +41,7 @@
 
 
    // Query to count available courses
-   $activeQuery = "SELECT COUNT(*) AS active_courses FROM course_list WHERE course_status = 'Active'";
+   $activeQuery = "SELECT COUNT(*) AS active_courses FROM course WHERE course_status = 'Active'";
    $activeResult = mysqli_query($con, $activeQuery);
 
    if (!$activeResult) {
@@ -54,7 +54,7 @@
    $activeCourses = $activeRow['active_courses'];
 
    // Query to count unavailable courses
-   $inactiveQuery = "SELECT COUNT(*) AS inactive_courses FROM course_list WHERE course_status = 'pending'";
+   $inactiveQuery = "SELECT COUNT(*) AS inactive_courses FROM course WHERE course_status = 'pending'";
    $inactiveResult = mysqli_query($con, $inactiveQuery);
 
    if (!$inactiveResult) {
@@ -67,7 +67,7 @@
    $inactiveCourses = $inactiveRow['inactive_courses'];
 
 
-   $approvedQuery = "SELECT COUNT(*) AS approved_courses FROM enrolled_courses WHERE enrollment_status = 'Approved'";
+   $approvedQuery = "SELECT COUNT(*) AS approved_courses FROM enrolled_course WHERE enrolled_course_status = 'Approved'";
    $approveResult = mysqli_query($con, $approvedQuery);
    
    if (!$approveResult) {
@@ -80,7 +80,7 @@
    $approvedCourses = $approvedRow['approved_courses'];
    
    // Query to count unavailable courses
-   $waitingapprovalQuery = "SELECT COUNT(*) AS waiting_approval FROM enrolled_courses WHERE enrollment_status = 'Waiting Approval'";
+   $waitingapprovalQuery = "SELECT COUNT(*) AS waiting_approval FROM enrolled_course WHERE enrolled_course_status = 'Waiting Approval'";
    $waitingResult = mysqli_query($con, $waitingapprovalQuery);
    
    if (!$waitingResult) {
@@ -130,7 +130,7 @@
         <a class="nav-link text-light me-3" href="/Auth/login.php"><i class="fa-solid fa-user"></i>Admin  </a>
         <a class="nav-link text-light me-3" href="./Auth/login.php">Login</a>
       <?php else : ?>
-        <a class="nav-link text-light me-3" href="profile.php"><i class="fa-solid fa-user"></i>Admin <?php echo $_SESSION['tutor_fname']; ?></a>
+        <a class="nav-link text-light me-3" href="#"><i class="fa-solid fa-user"></i>Admin <?php echo $_SESSION['tutor_fname']; ?></a>
         <a class="nav-link text-light me-3" href="logout.php">Logout</a>
       <?php endif; ?>
     </div>
@@ -150,7 +150,7 @@
           <li class="nav-item "><a class="nav-link m-2" href="adduser.php?adduser"><i class="fa-solid fa-user  p-1"></i>Add Users</a></li>
           <!-- <li class="nav-item "><a class="nav-link m-2" href="e.php?profile"><i class="fa-solid fa-user  p-1"></i>Edit  course</a></li> -->
           <li class="nav-item "><a class="nav-link m-2" href="viewusers.php?viewUsers"><i class="fa-solid fa-question  p-1"></i>View users</a></li>
-          <!-- <li class="nav-item "><a class="nav-link m-2" href="viewcourse.php?viewcourse"><i class="fa-solid fa-question  p-1"></i>View course</a></li> -->
+          <li class="nav-item "><a class="nav-link m-2" href="report.php?report"><i class="fa-regular fa-file-pdf p-1"></i>Generate Report</a></li>
         </ul>
       </div>
     </div>

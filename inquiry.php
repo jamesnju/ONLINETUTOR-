@@ -2,6 +2,7 @@
     include("./connection.php");
     session_start();
 
+
     if(isset($_POST['request'])){
         $username = $_POST['full_name'];
         $email = $_POST['inqurer_email'];
@@ -10,14 +11,14 @@
         $tutor_id = $_POST['tutor_name'];
 
 
-        $query_check  =  "select * from `inguiry_list` where inqurer_email='$email'";
+        $query_check  =  "select * from `inquirer` where inquirer_email='$email'";
         $reult_check  = mysqli_query($con, $query_check);
         $row_count = mysqli_num_rows($reult_check);
         if($row_count>0){
             echo "<script>alert('inquiry Already submitted')</script>";
         }else{
 
-        $insert_query = "insert into `inguiry_list` (tutor_id,full_name,inqurer_email,inquirer_contact,message,date_created) VALUES 
+        $insert_query = "insert into `inquirer` (registration_id,inquirer_full_name,inquirer_email,inquirer_contact,inquirer_message,inquirer_date_created) VALUES 
         ('$tutor_id','$username','$email','$contact','$message',Now())";
         $result_insert=mysqli_query($con, $insert_query);
         echo "<script>alert('inquiry submitted successfuly')</script>";
@@ -75,10 +76,9 @@
       </ul>
     </div>
   </div>
-</nav>
-<div class="container-fluid">
+</nav><div class="container-fluid">
     <div class="inquire d-flex">
-        <h2 class="text-center text-success w-100">Inquries Form</h2>
+        <h2 class="text-center text-success w-100">Student Inquries Form</h2>
         <fieldset class="row  bg-dark">
         <form action="" method="post" enctype="multipart/form-data">
             <label for="fullname">
@@ -95,20 +95,20 @@
             </label>
             
             <label for="message">
-                <p class="text">message</p>
-                <input type="text" name="message" placeholder="Enter specialty" required>
+                <p class="text">Message</p>
+                <input type="text" name="message" placeholder="Enter message.." required>
             </label>
             <label for="">
 
-                <p class="text">Name of the tutor</p>
+                <p class="text">Name of The Tutor</p>
                 <select name="tutor_name" id="">
                 <option value='select'>select tutor</option>;
                     <?php
-                    $select_tutor = "select * from `registration`";
+                    $select_tutor = "select * from `registration` where registration_role='tutor'";
                     $result_tutor=mysqli_query($con, $select_tutor);
                 while($fetch_data=mysqli_fetch_assoc($result_tutor)){
-                    $tutor_id=$fetch_data['tutor_id'];
-                    $tutor_fname = $fetch_data['tutor_fname'];
+                    $tutor_id=$fetch_data['registration_id'];
+                    $tutor_fname = $fetch_data['registration_fname'];
                     echo "<option value='$tutor_id'>$tutor_fname</option>";
                 }
                 ?>

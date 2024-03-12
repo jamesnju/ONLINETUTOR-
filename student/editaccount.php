@@ -12,13 +12,13 @@ if (!isset($_SESSION['tutor_fname'])) {
 $select_query="select * from `registration`";
 $result=mysqli_query($con,$select_query);
 while($row_fetch=mysqli_fetch_assoc($result)){
-    $tutor_id = $row_fetch['tutor_id']; // Fetch the tutor_id
+    $tutor_id = $row_fetch['registration_id']; // Fetch the tutor_id
 
-$tutor_fname=$row_fetch['tutor_fname'];
-$tutor_lname=$row_fetch['tutor_lname'];
-$tutor_email=$row_fetch['tutor_email'];
-$tutor_pic=$row_fetch['tutor_pic'];
-$tutor_password=$row_fetch['tutor_password'];
+$tutor_fname=$row_fetch['registration_fname'];
+$tutor_lname=$row_fetch['registration_lname'];
+$tutor_email=$row_fetch['registration_email'];
+$tutor_pic=$row_fetch['registration_pic'];
+$tutor_password=$row_fetch['registration_password'];
 }
 
 ?>
@@ -36,8 +36,8 @@ $tutor_password=$row_fetch['tutor_password'];
         $tutor_pic_tmp=$_FILES['tutor_pic']['tmp_name'];
         move_uploaded_file($tutor_pic_tmp,"./Auth/profileimg/$tutor_pic");
         //update query
-        $update_query="update `registration` set tutor_fname='$tutor_fname',tutor_lname='$tutor_lname',tutor_email='$tutor_email',tutor_pic='$tutor_pic',tutor_password='$tutor_password'
-        where tutor_id=$tutor_id";
+        $update_query="update `registration` set registration_fname='$tutor_fname',registration_lname='$tutor_lname',registration_email='$tutor_email',registration_pic='$tutor_pic',registration_password='$tutor_password'
+        where registration_id=$tutor_id";
         $result_query_update=mysqli_query($con,$update_query);
         if($result_query_update){
             echo "<script>alert('information updated successfully')</script>";

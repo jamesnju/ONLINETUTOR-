@@ -16,9 +16,9 @@ $result=mysqli_query($con,$select_query);
 while($row_fetch=mysqli_fetch_assoc($result)){
   
 $tutor_fname	=$_SESSION['tutor_fname'];
-$tutor_lname	=$row_fetch['tutor_lname'];
-$tutor_email	=$row_fetch['tutor_email'];
-$tutor_pic=$row_fetch['tutor_pic'];
+$tutor_lname	=$row_fetch['registration_lname'];
+$tutor_email	=$row_fetch['registration_email'];
+$tutor_pic=$row_fetch['registration_pic'];
 }
 
 
