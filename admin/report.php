@@ -19,19 +19,15 @@ if(isset($_POST['generate_report'])) {
             $this->Cell(30,10,'Report',0,0,'C');
             // Line break
             $this->Ln(20);
-
             // Add Date, Day, Time, and City
             $this->SetFont('Arial','',12);
-
             // Drawing a rectangle around the text
             $this->Rect(130, 29, 70, 40, 'D'); // Enclosing box
-
             $this->Cell(0, 10, date('F j, Y'), 0, 1, 'R'); // Date
             $this->Cell(0, 10, date('l'), 0, 1, 'R'); // Day
             $this->Cell(0, 10, date('h:i A'), 0, 1, 'R'); // Time
             $this->Cell(0, 10, $GLOBALS['cityName'], 0, 1, 'R'); // City
         }
-
         // Page footer
         function Footer() {
             // Position at 1.5 cm from bottom
@@ -40,7 +36,6 @@ if(isset($_POST['generate_report'])) {
             $this->SetFont('Arial','I',8);
             // Page number
             $this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
-
             // Disable automatic page break
             $this->SetAutoPageBreak(false);
         }
@@ -72,15 +67,25 @@ if(isset($_POST['generate_report'])) {
         if (mysqli_num_rows($result) > 0) {
             // Get column names
             $columns = mysqli_fetch_fields($result);
+            
+            // Specify the columns to exclude
+            $excludedColumns = array("course_id", "registration_id", "enrolled_course_id", "inquirer_id");
+            
             foreach ($columns as $column) {
-                $pdf->Cell(40,7,$column->name,1);
+                // Check if the column is not in the excluded list
+                if (!in_array($column->name, $excludedColumns)) {
+                    $pdf->Cell(40,7,$column->name,1);
+                }
             }
             $pdf->Ln();
 
             // Fetch and display rows
             while ($row = mysqli_fetch_assoc($result)) {
-                foreach ($row as $value) {
-                    $pdf->Cell(40,7,$value,1);
+                foreach ($row as $key => $value) {
+                    // Check if the column is not in the excluded list
+                    if (!in_array($key, $excludedColumns)) {
+                        $pdf->Cell(40,7,$value,1);
+                    }
                 }
                 $pdf->Ln();
             }
@@ -94,6 +99,7 @@ if(isset($_POST['generate_report'])) {
     exit; // Exit to prevent further HTML output
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
